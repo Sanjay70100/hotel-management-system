@@ -111,14 +111,14 @@ const Reservations = () => {
   }, [loadData]);
 
   const guestOptions: SelectOption[] = guests.map((guest) => ({
-    label: `${guest.full_name} — ${guest.phone}`,
+    label: `${guest.full_name || guest.name || "Guest"} — ${guest.phone || ""}`,
     value: String(guest.id),
   }));
 
   const roomOptions: SelectOption[] = rooms
-    .filter((room) => room.status === "available")
+    .filter((room) => String(room.status).toLowerCase() === "available")
     .map((room) => ({
-      label: `Room ${room.room_number} — ${room.room_type} — ${formatCurrency(room.price_per_night)}/night`,
+      label: `Room ${room.room_number ?? room.roomNumber ?? ""} — ${room.room_type ?? room.roomType ?? ""} — ${formatCurrency(room.price_per_night ?? room.price ?? 0)}/night`,
       value: String(room.id),
     }));
 
@@ -139,11 +139,12 @@ const Reservations = () => {
 
     const matchesSearch =
       String(reservation.id).includes(query) ||
-      (guest?.full_name ?? "").toLowerCase().includes(query) ||
-      (room?.room_number ?? "").toLowerCase().includes(query);
+      (guest?.full_name ?? guest?.name ?? "").toLowerCase().includes(query) ||
+      (room?.room_number ?? room?.roomNumber ?? "").toLowerCase().includes(query);
 
     const matchesStatus =
-      statusFilter === "all" || reservation.status === statusFilter;
+      statusFilter === "all" ||
+      String(reservation.status).toLowerCase() === statusFilter.toLowerCase();
 
     return matchesSearch && matchesStatus;
   });
@@ -218,6 +219,7 @@ const Reservations = () => {
         check_in: form.check_in,
         check_out: form.check_out,
         number_of_guests: form.number_of_guests,
+        total_price: totalAmount,
         total_amount: totalAmount,
         status: "pending",
       });

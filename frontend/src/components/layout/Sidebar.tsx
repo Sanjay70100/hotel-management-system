@@ -150,7 +150,7 @@ const Sidebar = ({
         </div>
 
         <nav className="sidebar-navigation">
-          {user?.role === "admin" && (
+          {user?.role?.toLowerCase() === "admin" && (
             <NavLink
               to="/staff"
               onClick={onClose}

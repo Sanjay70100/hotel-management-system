@@ -10,6 +10,7 @@ export interface LoginRequest {
 export interface LoginResponse {
   token?: string;
   accessToken?: string;
+  access_token?: string;
   tokenType?: string;
   username?: string;
   role?: string;
@@ -37,10 +38,13 @@ export interface ApiMessage {
 
 export interface Guest {
   id: number;
-  name: string;
+  full_name: string;
+  name?: string;
   email: string;
   phone: string;
   address?: string;
+  id_proof?: string;
+  created_at?: string;
 }
 
 // ==========================================
@@ -48,6 +52,10 @@ export interface Guest {
 // ==========================================
 
 export type RoomStatus =
+  | "available"
+  | "occupied"
+  | "maintenance"
+  | "reserved"
   | "AVAILABLE"
   | "OCCUPIED"
   | "MAINTENANCE"
@@ -55,11 +63,16 @@ export type RoomStatus =
 
 export interface Room {
   id: number;
-  roomNumber: string;
-  roomType: string;
-  price: number;
+  room_number: string;
+  roomNumber?: string;
+  room_type: string;
+  roomType?: string;
+  price_per_night: number;
+  price?: number;
+  capacity: number;
   status: RoomStatus;
   description?: string;
+  image_url?: string;
 }
 
 // ==========================================
@@ -124,7 +137,9 @@ export interface User {
   username: string;
   email?: string;
   role: string;
+  full_name?: string;
   enabled?: boolean;
+  is_active?: boolean;
 }
 
 // ==========================================
@@ -132,12 +147,18 @@ export interface User {
 // ==========================================
 
 export interface DashboardStats {
-  totalRooms: number;
-  availableRooms: number;
-  occupiedRooms: number;
-  totalGuests: number;
-  totalBookings: number;
-  totalRevenue: number;
+  totalRooms?: number;
+  availableRooms?: number;
+  occupiedRooms?: number;
+  totalGuests?: number;
+  totalBookings?: number;
+  totalRevenue?: number;
+  total_rooms?: number;
+  available_rooms?: number;
+  occupied_rooms?: number;
+  total_guests?: number;
+  total_reservations?: number;
+  total_revenue?: number;
 }
 
 // ==========================================
@@ -150,4 +171,29 @@ export interface PaginatedResponse<T> {
   totalPages: number;
   number: number;
   size: number;
+}
+// ==========================================
+// Reservation
+// ==========================================
+
+export type ReservationStatus =
+  | "pending"
+  | "confirmed"
+  | "checked_in"
+  | "checked_out"
+  | "cancelled";
+
+export interface Reservation {
+  id: number;
+  guest_id: number;
+  room_id: number;
+  check_in: string;
+  check_out: string;
+  number_of_guests: number;
+  total_price: number;
+  total_amount?: number;
+  status: ReservationStatus;
+  created_at?: string;
+  guest?: Guest;
+  room?: Room;
 }

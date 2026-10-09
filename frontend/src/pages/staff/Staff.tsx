@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Users, RefreshCw, Search, ShieldCheck } from "lucide-react";
+import { RefreshCw, Search, ShieldCheck } from "lucide-react";
 
 import api from "../../api/axios";
 import type { User } from "../../types";
@@ -43,9 +43,9 @@ const Staff = () => {
     const query = search.toLowerCase().trim();
 
     return (
-      person.username.toLowerCase().includes(query) ||
+      (person.username ?? "").toLowerCase().includes(query) ||
       (person.full_name ?? "").toLowerCase().includes(query) ||
-      person.email.toLowerCase().includes(query)
+      (person.email ?? "").toLowerCase().includes(query)
     );
   });
 
@@ -113,7 +113,7 @@ const Staff = () => {
                     <td>
                       <div className="staff-person">
                         <span className="staff-avatar">
-                          {(person.full_name || person.username)
+                          {(person.full_name || person.username || "S")
                             .charAt(0)
                             .toUpperCase()}
                         </span>
@@ -127,7 +127,7 @@ const Staff = () => {
                       </div>
                     </td>
 
-                    <td>{person.email}</td>
+                    <td>{person.email || "—"}</td>
                     <td>{person.username}</td>
 
                     <td>
@@ -139,7 +139,7 @@ const Staff = () => {
 
                     <td>
                       <StatusBadge
-                        status={person.is_active ? "active" : "inactive"}
+                        status={person.is_active === false ? "inactive" : "active"}
                       />
                     </td>
                   </tr>

@@ -35,7 +35,12 @@ const ProtectedRoute = ({
   }
 
   // Redirect users who do not have the required role.
-  if (allowedRoles && !allowedRoles.includes(user.role)) {
+  if (
+    allowedRoles &&
+    !allowedRoles.some(
+      (role) => role.toLowerCase() === (user.role ?? "").toLowerCase()
+    )
+  ) {
     return <Navigate to="/dashboard" replace />;
   }
 

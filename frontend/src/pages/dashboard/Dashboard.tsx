@@ -84,8 +84,11 @@ const Dashboard = () => {
     );
   }
 
-  const availableRooms = stats?.available_rooms ?? 0;
-  const totalRooms = stats?.total_rooms ?? 0;
+  const availableRooms = stats?.available_rooms ?? stats?.availableRooms ?? 0;
+  const totalRooms = stats?.total_rooms ?? stats?.totalRooms ?? 0;
+  const totalGuests = stats?.total_guests ?? stats?.totalGuests ?? 0;
+  const totalReservations = stats?.total_reservations ?? stats?.totalBookings ?? 0;
+  const totalRevenue = stats?.total_revenue ?? stats?.totalRevenue ?? 0;
 
   const occupancyRate =
     totalRooms > 0
@@ -145,7 +148,7 @@ const Dashboard = () => {
           >
             <StatCard
               title="Total Rooms"
-              value={stats.total_rooms}
+              value={totalRooms}
               description="Rooms registered"
               icon={<BedDouble size={22} />}
               color="blue"
@@ -153,7 +156,7 @@ const Dashboard = () => {
 
             <StatCard
               title="Available Rooms"
-              value={stats.available_rooms}
+              value={availableRooms}
               description="Ready for guests"
               icon={<BedDouble size={22} />}
               color="green"
@@ -161,7 +164,7 @@ const Dashboard = () => {
 
             <StatCard
               title="Total Guests"
-              value={stats.total_guests}
+              value={totalGuests}
               description="Registered guests"
               icon={<Users size={22} />}
               color="purple"
@@ -169,7 +172,7 @@ const Dashboard = () => {
 
             <StatCard
               title="Reservations"
-              value={stats.total_reservations}
+              value={totalReservations}
               description="All reservations"
               icon={<CalendarCheck size={22} />}
               color="orange"
@@ -177,7 +180,7 @@ const Dashboard = () => {
 
             <StatCard
               title="Total Revenue"
-              value={formatCurrency(stats.total_revenue)}
+              value={formatCurrency(totalRevenue)}
               description="Reported revenue"
               icon={<IndianRupee size={22} />}
               color="green"

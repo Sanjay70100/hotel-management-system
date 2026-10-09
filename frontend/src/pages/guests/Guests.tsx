@@ -74,9 +74,9 @@ const Guests = () => {
     const query = search.trim().toLowerCase();
 
     return (
-      guest.full_name.toLowerCase().includes(query) ||
-      guest.email.toLowerCase().includes(query) ||
-      guest.phone.toLowerCase().includes(query)
+      (guest.full_name ?? guest.name ?? "").toLowerCase().includes(query) ||
+      (guest.email ?? "").toLowerCase().includes(query) ||
+      (guest.phone ?? "").toLowerCase().includes(query)
     );
   });
 

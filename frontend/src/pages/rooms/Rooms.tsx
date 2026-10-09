@@ -99,13 +99,16 @@ const Rooms = () => {
   const filteredRooms = rooms.filter((room) => {
     const query = search.trim().toLowerCase();
 
+    const roomNum = (room.room_number ?? room.roomNumber ?? "").toLowerCase();
+    const roomType = (room.room_type ?? room.roomType ?? "").toLowerCase();
     const matchesSearch =
-      room.room_number.toLowerCase().includes(query) ||
-      room.room_type.toLowerCase().includes(query) ||
+      roomNum.includes(query) ||
+      roomType.includes(query) ||
       (room.description ?? "").toLowerCase().includes(query);
 
     const matchesStatus =
-      statusFilter === "all" || room.status === statusFilter;
+      statusFilter === "all" ||
+      String(room.status).toLowerCase() === statusFilter.toLowerCase();
 
     return matchesSearch && matchesStatus;
   });
@@ -209,15 +212,15 @@ const Rooms = () => {
         </div>
         <div className="rooms-summary-item">
           <span>Available</span>
-          <strong>{rooms.filter((r) => r.status === "available").length}</strong>
+          <strong>{rooms.filter((r) => String(r.status).toLowerCase() === "available").length}</strong>
         </div>
         <div className="rooms-summary-item">
           <span>Occupied</span>
-          <strong>{rooms.filter((r) => r.status === "occupied").length}</strong>
+          <strong>{rooms.filter((r) => String(r.status).toLowerCase() === "occupied").length}</strong>
         </div>
         <div className="rooms-summary-item">
           <span>Maintenance</span>
-          <strong>{rooms.filter((r) => r.status === "maintenance").length}</strong>
+          <strong>{rooms.filter((r) => String(r.status).toLowerCase() === "maintenance").length}</strong>
         </div>
       </div>
 

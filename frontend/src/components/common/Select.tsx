@@ -1,4 +1,4 @@
-import { useId, type SelectHTMLAttributes } from "react";
+import { useId, type SelectHTMLAttributes, type ChangeEvent } from "react";
 
 import "./Select.css";
 
@@ -8,12 +8,14 @@ export interface SelectOption {
 }
 
 interface SelectProps
-  extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "size"> {
-  label: string;
+  extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "size" | "onChange"> {
+  label?: string;
   options: SelectOption[];
   error?: string;
   helperText?: string;
   placeholder?: string;
+  value?: string;
+  onChange?: (value: string) => void;
 }
 
 const Select = ({
@@ -25,6 +27,8 @@ const Select = ({
   id,
   className = "",
   required,
+  value,
+  onChange,
   ...props
 }: SelectProps) => {
   const generatedId = useId();
@@ -41,22 +45,32 @@ const Select = ({
       .filter(Boolean)
       .join(" ") || undefined;
 
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    if (onChange) {
+      onChange(event.target.value);
+    }
+  };
+
   return (
     <div className="form-select-group">
-      <label
-        htmlFor={selectId}
-        className="form-select-label"
-      >
-        {label}
+      {label && (
+        <label
+          htmlFor={selectId}
+          className="form-select-label"
+        >
+          {label}
 
-        {required && (
-          <span className="form-select-required"> *</span>
-        )}
-      </label>
+          {required && (
+            <span className="form-select-required"> *</span>
+          )}
+        </label>
+      )}
 
       <select
         {...props}
         id={selectId}
+        value={value}
+        onChange={handleChange}
         required={required}
         className={[
           "form-select",

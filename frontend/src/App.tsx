@@ -11,7 +11,7 @@ import { Login, ForgotPassword } from "./pages/auth";
 import { Dashboard } from "./pages/dashboard";
 import { Rooms } from "./pages/rooms";
 import { Guests } from "./pages/guests";
-import { Reservations } from "./pages/reservations";
+import { Reservations } from "./pages/reservation";
 import { Staff } from "./pages/staff";
 import { Settings } from "./pages/settings";
 
