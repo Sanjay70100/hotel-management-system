@@ -1,0 +1,167 @@
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 4%);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.stat-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.stat-card-heading {
+  min-width: 0;
+}
+
+.stat-card-title {
+  margin: 0 0 12px;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.stat-card-value {
+  margin: 0;
+  color: #111827;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.stat-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  font-size: 25px;
+}
+
+.stat-card-red .stat-card-icon {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.stat-card-blue .stat-card-icon {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.stat-card-green .stat-card-icon {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.stat-card-orange .stat-card-icon {
+  background: #ffedd5;
+  color: #ea580c;
+}
+
+.stat-card-purple .stat-card-icon {
+  background: #f3e8ff;
+  color: #9333ea;
+}
+
+.stat-card-footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 20px;
+}
+
+.stat-card-description {
+  margin: 0;
+  color: #6b7280;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.stat-card-trend {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.stat-card-trend-positive {
+  color: #15803d;
+}
+
+.stat-card-trend-negative {
+  color: #dc2626;
+}
+
+.stat-card-trend-label {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.stat-card-clickable {
+  cursor: pointer;
+}
+
+.stat-card-clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgb(0 0 0 / 8%);
+}
+
+.stat-card-action {
+  align-self: flex-start;
+  margin-top: 16px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #dc2626;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.stat-card-action:hover {
+  color: #b91c1c;
+  text-decoration: underline;
+}
+
+.stat-card-action:focus-visible {
+  outline: 2px solid #dc2626;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .stat-card {
+    padding: 18px;
+  }
+
+  .stat-card-value {
+    font-size: 26px;
+  }
+
+  .stat-card-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 21px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat-card {
+    transition: none;
+  }
+
+  .stat-card-clickable:hover {
+    transform: none;
+  }
+}

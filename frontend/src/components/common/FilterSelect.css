@@ -1,0 +1,46 @@
+.filter-select-container {
+  width: 100%;
+  max-width: 240px;
+}
+
+.filter-select-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-select-label-text {
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.filter-select {
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 36px 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #111827;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filter-select:focus-visible {
+  border-color: #dc2626;
+  outline: 3px solid rgb(220 38 38 / 12%);
+}
+
+.filter-select:disabled {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .filter-select-container {
+    max-width: 100%;
+  }
+}

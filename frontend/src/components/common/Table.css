@@ -1,0 +1,74 @@
+.app-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.app-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.app-table thead {
+  background: #f9fafb;
+}
+
+.app-table th {
+  padding: 15px 18px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #374151;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.app-table td {
+  padding: 15px 18px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #4b5563;
+  vertical-align: middle;
+}
+
+.app-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.app-table tbody tr:hover {
+  background: #fafafa;
+}
+
+.app-table-row-clickable {
+  cursor: pointer;
+}
+
+.app-table-row-clickable:focus-within {
+  outline: 2px solid #dc2626;
+  outline-offset: -2px;
+}
+
+.app-table th:first-child,
+.app-table td:first-child {
+  padding-left: 22px;
+}
+
+.app-table th:last-child,
+.app-table td:last-child {
+  padding-right: 22px;
+}
+
+@media (max-width: 768px) {
+  .app-table {
+    min-width: 650px;
+  }
+
+  .app-table th,
+  .app-table td {
+    padding: 12px 14px;
+  }
+}

@@ -1,0 +1,97 @@
+.app-card {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 4%);
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.app-card-padding-small .app-card-body {
+  padding: 12px;
+}
+
+.app-card-padding-medium .app-card-body {
+  padding: 20px;
+}
+
+.app-card-padding-large .app-card-body {
+  padding: 28px;
+}
+
+.app-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.app-card-heading {
+  min-width: 0;
+}
+
+.app-card-title {
+  margin: 0;
+  color: #111827;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.app-card-description {
+  margin: 6px 0 0;
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.app-card-header-action {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.app-card-clickable {
+  cursor: pointer;
+}
+
+.app-card-clickable:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 8%);
+}
+
+.app-card-clickable:focus-within {
+  border-color: #dc2626;
+}
+
+@media (max-width: 600px) {
+  .app-card-header {
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .app-card-padding-medium .app-card-body {
+    padding: 16px;
+  }
+
+  .app-card-padding-large .app-card-body {
+    padding: 20px;
+  }
+
+  .app-card-title {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-card {
+    transition: none;
+  }
+}

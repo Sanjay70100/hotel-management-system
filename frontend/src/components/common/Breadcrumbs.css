@@ -1,0 +1,75 @@
+.app-breadcrumbs {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.app-breadcrumbs-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.app-breadcrumbs-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.app-breadcrumbs-link {
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.app-breadcrumbs-link:hover {
+  color: #dc2626;
+  text-decoration: underline;
+}
+
+.app-breadcrumbs-link:focus-visible {
+  border-radius: 3px;
+  outline: 2px solid #dc2626;
+  outline-offset: 3px;
+}
+
+.app-breadcrumbs-text {
+  color: #6b7280;
+}
+
+.app-breadcrumbs-current {
+  color: #111827;
+  font-weight: 600;
+}
+
+.app-breadcrumbs-separator {
+  color: #9ca3af;
+  user-select: none;
+}
+
+@media (max-width: 480px) {
+  .app-breadcrumbs {
+    margin-bottom: 16px;
+  }
+
+  .app-breadcrumbs-list {
+    gap: 6px;
+  }
+
+  .app-breadcrumbs-item {
+    gap: 6px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-breadcrumbs-link {
+    transition: none;
+  }
+}

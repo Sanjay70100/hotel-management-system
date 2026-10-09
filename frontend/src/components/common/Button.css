@@ -1,0 +1,116 @@
+.app-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.app-button-small {
+  min-height: 32px;
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.app-button-medium {
+  min-height: 42px;
+  padding: 10px 16px;
+  font-size: 14px;
+}
+
+.app-button-large {
+  min-height: 48px;
+  padding: 12px 22px;
+  font-size: 16px;
+}
+
+/* Primary action */
+.app-button-primary {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.app-button-primary:hover:not(:disabled) {
+  background: #b91c1c;
+}
+
+/* Secondary action */
+.app-button-secondary {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.app-button-secondary:hover:not(:disabled) {
+  background: #d1d5db;
+}
+
+/* Destructive action */
+.app-button-danger {
+  background: #991b1b;
+  color: #ffffff;
+}
+
+.app-button-danger:hover:not(:disabled) {
+  background: #7f1d1d;
+}
+
+/* Outlined action */
+.app-button-outline {
+  border-color: #d1d5db;
+  background: #ffffff;
+  color: #374151;
+}
+
+.app-button-outline:hover:not(:disabled) {
+  border-color: #9ca3af;
+  background: #f9fafb;
+}
+
+/* Full-width button */
+.app-button-full-width {
+  width: 100%;
+}
+
+/* Disabled state */
+.app-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Keyboard accessibility */
+.app-button:focus-visible {
+  outline: 3px solid #fca5a5;
+  outline-offset: 3px;
+}
+
+/* Loading indicator */
+.app-button-spinner {
+  width: 15px;
+  height: 15px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: app-button-spin 0.7s linear infinite;
+}
+
+@keyframes app-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-button,
+  .app-button-spinner {
+    animation-duration: 1.5s;
+    transition: none;
+  }
+}
