@@ -60,11 +60,39 @@ public class SecurityConfig {
                         )
                 )
 
+                // Allow iframe for H2 database console
+                .headers(headers -> headers.frameOptions(frame -> frame.disable()))
+
                 .authorizeHttpRequests(auth -> auth
 
                         // Login does not require JWT
                         .requestMatchers(
                                 "/api/auth/**"
+                        ).permitAll()
+
+                        // H2 Console
+                        .requestMatchers(
+                                "/h2-console/**"
+                        ).permitAll()
+
+                        // Static frontend web app resources
+                        .requestMatchers(
+                                "/",
+                                "/index.html",
+                                "/css/**",
+                                "/js/**",
+                                "/assets/**",
+                                "/static/**",
+                                "/favicon.ico",
+                                "/**.css",
+                                "/**.js",
+                                "/**.html",
+                                "/**.png",
+                                "/**.jpg",
+                                "/**.jpeg",
+                                "/**.svg",
+                                "/**.woff",
+                                "/**.woff2"
                         ).permitAll()
 
                         // Swagger/OpenAPI

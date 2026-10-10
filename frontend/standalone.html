@@ -1,0 +1,3615 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GrandStay Royale - Luxury 5-Star Executive Hotel Management System with real-time room suites, reservations, billing, and guest operations." />
+  <title>GrandStay Royale — Executive Luxury Hotel Management</title>
+  <style>
+/* ==========================================================================
+   GRANDSTAY ROYALE — LUXURY HOTEL MANAGEMENT SYSTEM
+   Aesthetic Design System: Obsidian & Champagne Gold
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+:root {
+  /* Color Palette - Luxury Dark Theme */
+  --bg-primary: #0a0d14;
+  --bg-secondary: #101622;
+  --bg-surface: #161e30;
+  --bg-surface-elevated: #1e293f;
+  --bg-surface-hover: #26344f;
+  --bg-glass: rgba(16, 22, 34, 0.75);
+  --bg-glass-card: rgba(22, 30, 48, 0.65);
+
+  /* Gold & Accent Tokens */
+  --gold-50: #fbf8ee;
+  --gold-100: #f5eed3;
+  --gold-200: #eedda9;
+  --gold-300: #e4c776;
+  --gold-400: #d8b04c;
+  --gold-500: #c59733;
+  --gold-600: #ab7927;
+  --gold-gradient: linear-gradient(135deg, #f5eed3 0%, #d8b04c 50%, #ab7927 100%);
+  --gold-glow: 0 0 25px rgba(216, 176, 76, 0.25);
+
+  /* Accent Colors */
+  --emerald-500: #10b981;
+  --emerald-glow: 0 0 20px rgba(16, 185, 129, 0.25);
+  --sapphire-500: #3b82f6;
+  --sapphire-glow: 0 0 20px rgba(59, 130, 246, 0.25);
+  --amber-500: #f59e0b;
+  --rose-500: #f43f5e;
+  --rose-glow: 0 0 20px rgba(244, 63, 94, 0.25);
+  --purple-500: #8b5cf6;
+
+  /* Typography Colors */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+  --text-gold: #e4c776;
+
+  /* Borders & Shadows */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-light: rgba(255, 255, 255, 0.12);
+  --border-gold: rgba(216, 176, 76, 0.35);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+  --shadow-luxury: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(216, 176, 76, 0.08);
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-heading: 'Outfit', -apple-system, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Layout */
+  --sidebar-width: 270px;
+  --header-height: 76px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Animation */
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Light Theme Mode */
+[data-theme="light"] {
+  --bg-primary: #f6f8fb;
+  --bg-secondary: #ffffff;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f1f4f9;
+  --bg-surface-hover: #e6ebf4;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+  --bg-glass-card: rgba(255, 255, 255, 0.85);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #94a3b8;
+  --text-gold: #996e1a;
+
+  --border-subtle: rgba(15, 23, 42, 0.06);
+  --border-light: rgba(15, 23, 42, 0.12);
+  --border-gold: rgba(180, 130, 30, 0.4);
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.12);
+  --shadow-luxury: 0 20px 50px rgba(15, 23, 42, 0.08), 0 0 25px rgba(216, 176, 76, 0.1);
+}
+
+/* Base Styles & Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 15px;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   LAYOUT STRUCTURE
+   ========================================================================== */
+
+#app-container {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+  transition: transform var(--transition-smooth);
+}
+
+.sidebar-header {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  gap: 14px;
+}
+
+.brand-crest {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--gold-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--gold-glow);
+  color: #1e1302;
+  font-size: 22px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.brand-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.brand-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+}
+
+.brand-subtitle {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+}
+
+.nav-section-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-tertiary);
+  padding: 12px 14px 6px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.nav-item:hover {
+  background: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  transform: translateX(3px);
+}
+
+.nav-item.active {
+  background: linear-gradient(90deg, rgba(216, 176, 76, 0.15), rgba(216, 176, 76, 0.03));
+  color: var(--text-gold);
+  font-weight: 600;
+  border: 1px solid var(--border-gold);
+}
+
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 18%;
+  bottom: 18%;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+  background: var(--gold-gradient);
+}
+
+.nav-icon {
+  font-size: 1.15rem;
+  width: 22px;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.nav-badge {
+  margin-left: auto;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: rgba(216, 176, 76, 0.18);
+  color: var(--gold-300);
+}
+
+.sidebar-footer {
+  padding: 16px 18px;
+  border-top: 1px solid var(--border-subtle);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.hotel-pulse {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.pulse-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--emerald-500);
+  box-shadow: 0 0 10px var(--emerald-500);
+  animation: pulse-ring 2s infinite ease-out;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Main Content Area */
+.main-wrapper {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: calc(100% - var(--sidebar-width));
+}
+
+/* Header Styles */
+.top-header {
+  height: var(--header-height);
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  padding: 6px;
+}
+
+.search-box {
+  position: relative;
+  width: 320px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-tertiary);
+  font-size: 0.95rem;
+}
+
+.search-input {
+  width: 100%;
+  height: 42px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 0 16px 0 40px;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--gold-400);
+  background: var(--bg-surface-elevated);
+  box-shadow: 0 0 0 3px rgba(216, 176, 76, 0.15);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.connection-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.connection-pill.online .status-dot {
+  background: var(--emerald-500);
+  box-shadow: 0 0 8px var(--emerald-500);
+}
+
+.connection-pill.demo .status-dot {
+  background: var(--amber-500);
+  box-shadow: 0 0 8px var(--amber-500);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.icon-button {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 1.15rem;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.icon-button:hover {
+  background: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  border-color: var(--border-light);
+  transform: translateY(-1px);
+}
+
+.user-profile-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 12px 5px 6px;
+  border-radius: var(--radius-full);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.user-profile-badge:hover {
+  border-color: var(--border-gold);
+  background: var(--bg-surface-elevated);
+}
+
+.user-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  color: #1e1302;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.user-role-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--gold-400);
+}
+
+/* ==========================================================================
+   PAGE HERO BANNER
+   ========================================================================== */
+
+.hero-banner {
+  margin: 24px 32px 0;
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  box-shadow: var(--shadow-luxury);
+  border: 1px solid var(--border-gold);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, 
+    rgba(10, 13, 20, 0.94) 0%, 
+    rgba(10, 13, 20, 0.85) 45%, 
+    rgba(10, 13, 20, 0.4) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 36px 44px;
+}
+
+.hero-content {
+  max-width: 650px;
+  z-index: 2;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(216, 176, 76, 0.16);
+  border: 1px solid var(--border-gold);
+  color: var(--gold-300);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  z-index: 2;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   MAIN VIEW CONTAINER
+   ========================================================================== */
+
+.content-body {
+  padding: 28px 32px 48px;
+  flex: 1;
+}
+
+.tab-pane {
+  display: none;
+  animation: fadeIn 240ms ease-out forwards;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Section Header */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.section-title-wrap h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.section-title-wrap p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-top: 3px;
+}
+
+.header-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--gold-gradient);
+  color: #1a1202;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(216, 176, 76, 0.28);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(216, 176, 76, 0.4);
+}
+
+.btn-secondary {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-surface-elevated);
+  border-color: var(--border-light);
+  transform: translateY(-1px);
+}
+
+.btn-danger {
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  color: var(--rose-500);
+}
+
+.btn-danger:hover {
+  background: var(--rose-500);
+  color: #ffffff;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   STAT CARDS & KPI GRID
+   ========================================================================== */
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--bg-glass-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+}
+
+.stat-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-luxury);
+}
+
+.stat-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.stat-icon-wrap {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+}
+
+.stat-icon-wrap.gold {
+  background: rgba(216, 176, 76, 0.15);
+  color: var(--gold-400);
+  border: 1px solid var(--border-gold);
+}
+
+.stat-icon-wrap.emerald {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--emerald-500);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.stat-icon-wrap.sapphire {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--sapphire-500);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.stat-icon-wrap.rose {
+  background: rgba(244, 63, 94, 0.15);
+  color: var(--rose-500);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+.stat-trend {
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--emerald-500);
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 4px;
+}
+
+.stat-meta {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+/* ==========================================================================
+   OCCUPANCY & ANALYTICS BAR
+   ========================================================================== */
+
+.analytics-banner {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.occupancy-progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.occupancy-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.occupancy-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.occupancy-percentage {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold-400);
+}
+
+.progress-track {
+  height: 10px;
+  background: var(--bg-surface-elevated);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--gold-gradient);
+  box-shadow: var(--gold-glow);
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.room-status-mini-pills {
+  display: flex;
+  gap: 16px;
+  margin-top: 4px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.status-indicator-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+/* ==========================================================================
+   CARDS, TABLES & DATA SURFACES
+   ========================================================================== */
+
+.panel-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 28px;
+}
+
+.panel-card-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.panel-card-header h3 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Luxury Table Styling */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.luxury-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.luxury-table th {
+  padding: 14px 22px;
+  background: var(--bg-surface-elevated);
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border-bottom: 1px solid var(--border-subtle);
+  white-space: nowrap;
+}
+
+.luxury-table td {
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+.luxury-table tr:hover td {
+  background: var(--bg-surface-hover);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badge-available, .badge-paid, .badge-confirmed {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--emerald-500);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-occupied, .badge-checked_in {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--sapphire-500);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.badge-maintenance, .badge-cancelled, .badge-failed {
+  background: rgba(244, 63, 94, 0.15);
+  color: var(--rose-500);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+.badge-pending, .badge-reserved {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--amber-500);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-checked_out, .badge-refunded {
+  background: rgba(148, 163, 184, 0.15);
+  color: var(--text-tertiary);
+  border: 1px solid var(--border-subtle);
+}
+
+/* ==========================================================================
+   ROOMS GRID VIEW
+   ========================================================================== */
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.filter-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.filter-pill:hover {
+  background: var(--bg-surface-elevated);
+  color: var(--text-primary);
+}
+
+.filter-pill.active {
+  background: var(--gold-gradient);
+  color: #1a1202;
+  font-weight: 700;
+  border-color: transparent;
+  box-shadow: 0 2px 10px rgba(216, 176, 76, 0.25);
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 24px;
+}
+
+.room-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.room-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-luxury);
+}
+
+.room-card-image-wrap {
+  height: 175px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #1a2233;
+}
+
+.room-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.room-card:hover .room-card-image {
+  transform: scale(1.05);
+}
+
+.room-badge-overlay {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
+
+.room-price-overlay {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  background: rgba(10, 13, 20, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-gold);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--gold-300);
+}
+
+.room-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.room-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.room-number {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.room-type {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.room-card-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   MODAL WINDOWS & FORMS
+   ========================================================================== */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 7, 14, 0.78);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-smooth);
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-container {
+  width: 100%;
+  max-width: 580px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-luxury);
+  transform: scale(0.95) translateY(10px);
+  transition: transform var(--transition-smooth);
+  overflow: hidden;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-backdrop.active .modal-container {
+  transform: scale(1) translateY(0);
+}
+
+.modal-header {
+  padding: 22px 26px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-surface);
+}
+
+.modal-header h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.modal-close-btn {
+  font-size: 1.4rem;
+  color: var(--text-tertiary);
+  padding: 4px;
+}
+
+.modal-close-btn:hover {
+  color: var(--text-primary);
+}
+
+.modal-body {
+  padding: 26px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-control {
+  width: 100%;
+  height: 44px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0 16px;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 85px;
+  padding: 12px 16px;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--gold-400);
+  background: var(--bg-surface-elevated);
+  box-shadow: 0 0 0 3px rgba(216, 176, 76, 0.15);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.modal-footer {
+  padding: 18px 26px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  background: var(--bg-surface);
+}
+
+/* ==========================================================================
+   TOAST NOTIFICATION SYSTEM
+   ========================================================================== */
+
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 28px;
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  min-width: 300px;
+  max-width: 420px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  box-shadow: var(--shadow-lg);
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: all 0.3s ease;
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.toast.toast-success { border-color: var(--emerald-500); }
+.toast.toast-error { border-color: var(--rose-500); }
+.toast.toast-info { border-color: var(--gold-400); }
+
+.toast-icon {
+  font-size: 1.2rem;
+  margin-top: 1px;
+}
+
+.toast-content {
+  flex: 1;
+}
+
+.toast-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.toast-message {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .main-wrapper {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .analytics-banner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-header {
+    padding: 0 16px;
+  }
+
+  .search-box {
+    display: none;
+  }
+
+  .hero-banner {
+    margin: 16px 16px 0;
+  }
+
+  .hero-overlay {
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .hero-title {
+    font-size: 1.6rem;
+  }
+
+  .content-body {
+    padding: 20px 16px 40px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20y=%220%22%20width=%22100%22%20height=%22100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
+</head>
+<body>
+
+<div id="app-container">
+  <!-- SIDEBAR NAVIGATION -->
+  <aside class="sidebar" id="app-sidebar">
+    <div class="sidebar-header">
+      <div class="brand-crest">👑</div>
+      <div class="brand-info">
+        <span class="brand-title">GrandStay</span>
+        <span class="brand-subtitle">Royale Suites</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-title">Overview</div>
+      <a href="#dashboard" class="nav-item active" data-tab="dashboard" id="nav-item-dashboard">
+        <span class="nav-icon">📊</span>
+        <span>Dashboard</span>
+      </a>
+
+      <div class="nav-section-title">Front Office</div>
+      <a href="#rooms" class="nav-item" data-tab="rooms" id="nav-item-rooms">
+        <span class="nav-icon">🏨</span>
+        <span>Rooms & Suites</span>
+      </a>
+      <a href="#reservations" class="nav-item" data-tab="reservations" id="nav-item-reservations">
+        <span class="nav-icon">📅</span>
+        <span>Reservations</span>
+      </a>
+      <a href="#guests" class="nav-item" data-tab="guests" id="nav-item-guests">
+        <span class="nav-icon">👤</span>
+        <span>Guest Directory</span>
+      </a>
+
+      <div class="nav-section-title">Finance & Ops</div>
+      <a href="#billing" class="nav-item" data-tab="billing" id="nav-item-billing">
+        <span class="nav-icon">💳</span>
+        <span>Billing & Payments</span>
+      </a>
+      <a href="#staff" class="nav-item" data-tab="staff" id="nav-item-staff">
+        <span class="nav-icon">👔</span>
+        <span>Staff & Personnel</span>
+      </a>
+
+      <div class="nav-section-title">Administration</div>
+      <a href="#users" class="nav-item" data-tab="users" id="nav-item-users">
+        <span class="nav-icon">🛡️</span>
+        <span>User Accounts</span>
+      </a>
+      <a href="#settings" class="nav-item" data-tab="settings" id="nav-item-settings">
+        <span class="nav-icon">⚙️</span>
+        <span>System & API</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="hotel-pulse">
+        <span class="pulse-dot"></span>
+        <span>GrandStay Resort — Online</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN WRAPPER -->
+  <div class="main-wrapper">
+    <!-- TOP HEADER -->
+    <header class="top-header">
+      <div class="header-left">
+        <button class="mobile-menu-toggle" id="btn-toggle-sidebar" onclick="toggleSidebar()" aria-label="Toggle Navigation">
+          ☰
+        </button>
+
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" id="global-search-input" placeholder="Search rooms, guests, bookings..." />
+        </div>
+      </div>
+
+      <div class="header-right">
+        <!-- Live Connection Status Pill -->
+        <div class="connection-pill demo" id="connection-status-pill" title="Backend Connection State">
+          <span class="status-dot"></span>
+          <span id="connection-status-text">Checking Backend...</span>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button class="icon-button" id="btn-toggle-theme" onclick="toggleTheme()" title="Switch Dark / Light Luxury Mode" aria-label="Toggle Theme">
+          🌓
+        </button>
+
+        <!-- Quick Login / Account Profile Badge -->
+        <div class="user-profile-badge" id="btn-open-user-menu" onclick="openModal('login-modal')">
+          <div class="user-avatar" id="header-user-avatar">AD</div>
+          <div class="user-details">
+            <span class="user-name" id="header-user-name">Administrator</span>
+            <span class="user-role-tag" id="header-user-role">ADMIN</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- LUXURY HERO BANNER -->
+    <section class="hero-banner" style="background-image: url('assets/hero.jpg');">
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <div class="hero-tag">✨ Luxury Hospitality Management</div>
+          <h1 class="hero-title">GrandStay Royale Palace</h1>
+          <p class="hero-subtitle">
+            Orchestrating 5-star guest journeys, suite inventory, seamless bookings, and financial analytics.
+          </p>
+        </div>
+
+        <div class="hero-actions">
+          <div style="background: rgba(10, 13, 20, 0.7); backdrop-filter: blur(8px); border: 1px solid var(--border-gold); padding: 8px 16px; border-radius: var(--radius-md); text-align: right; color: var(--gold-300);">
+            <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-tertiary);">Local Time</div>
+            <div id="hero-clock" style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700;">12:00:00 PM</div>
+          </div>
+          <button class="btn btn-primary" id="btn-hero-new-booking" onclick="openCreateReservationModal()">
+            <span>+</span> New Reservation
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT BODY (TAB PANELS) -->
+    <main class="content-body">
+
+      <!-- 1. DASHBOARD TAB -->
+      <section class="tab-pane active" id="tab-dashboard">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>Executive Dashboard</h2>
+            <p>Real-time property performance, occupancy indicators, and daily logistics</p>
+          </div>
+          <div class="header-actions-group">
+            <button class="btn btn-secondary" id="btn-refresh-dashboard" onclick="fetchAllData()">
+              🔄 Refresh Data
+            </button>
+            <button class="btn btn-primary" id="btn-dashboard-new-room" onclick="openModal('add-room-modal')">
+              + Add Suite
+            </button>
+          </div>
+        </div>
+
+        <!-- KPI Metrics Grid -->
+        <div class="metrics-grid">
+          <div class="stat-card">
+            <div class="stat-card-top">
+              <div class="stat-icon-wrap gold">₹</div>
+              <span class="stat-trend">↑ Live</span>
+            </div>
+            <div class="stat-label">Total Revenue</div>
+            <div class="stat-value" id="stat-total-revenue">₹0</div>
+            <div class="stat-meta">Aggregated verified guest payments</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-top">
+              <div class="stat-icon-wrap emerald">🏨</div>
+              <span class="stat-trend" id="occupancy-pill-trend">Optimal</span>
+            </div>
+            <div class="stat-label">Occupancy Rate</div>
+            <div class="stat-value" id="stat-occupancy-rate">0%</div>
+            <div class="stat-meta">Active guest suites occupied</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-top">
+              <div class="stat-icon-wrap sapphire">📅</div>
+              <span class="stat-trend">Active</span>
+            </div>
+            <div class="stat-label">Total Bookings</div>
+            <div class="stat-value" id="stat-total-bookings">0</div>
+            <div class="stat-meta">Confirmed & in-house reservations</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-top">
+              <div class="stat-icon-wrap rose">👥</div>
+              <span class="stat-trend">Registered</span>
+            </div>
+            <div class="stat-label">VIP Guests</div>
+            <div class="stat-value" id="stat-total-guests">0</div>
+            <div class="stat-meta">Registered profiles in directory</div>
+          </div>
+        </div>
+
+        <!-- Occupancy Bar & Realtime Room Grid -->
+        <div class="analytics-banner">
+          <div class="occupancy-progress-section">
+            <div class="occupancy-header">
+              <span class="occupancy-title">Property Occupancy Index</span>
+              <span class="occupancy-percentage" id="occupancy-banner-percentage">0% Occupied</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" id="occupancy-bar-fill" style="width: 0%;"></div>
+            </div>
+            <div class="room-status-mini-pills">
+              <span><span class="status-indicator-dot" style="background: var(--emerald-500);"></span><span id="occupancy-available-count">0 Available</span></span>
+              <span><span class="status-indicator-dot" style="background: var(--sapphire-500);"></span><span id="occupancy-occupied-count">0 Occupied</span></span>
+              <span><span class="status-indicator-dot" style="background: var(--rose-500);"></span><span id="occupancy-maintenance-count">0 Maintenance</span></span>
+            </div>
+          </div>
+
+          <div style="grid-column: span 2; display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase;">Quick Suite Floor Map</span>
+              <button class="btn btn-sm btn-secondary" onclick="switchTab('rooms')">View All Suites →</button>
+            </div>
+            <div id="dashboard-floor-matrix" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(56px, 1fr)); gap: 8px;">
+              <!-- Populated via app.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Reservations Table -->
+        <div class="panel-card">
+          <div class="panel-card-header">
+            <h3>Recent Bookings Live Stream</h3>
+            <button class="btn btn-sm btn-secondary" onclick="switchTab('reservations')">View Complete Ledger</button>
+          </div>
+          <div class="table-responsive">
+            <table class="luxury-table">
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>Guest Details</th>
+                  <th>Room Suite</th>
+                  <th>Duration</th>
+                  <th>Guests</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="dashboard-recent-bookings">
+                <!-- Populated via app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. ROOMS & SUITES TAB -->
+      <section class="tab-pane" id="tab-rooms">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>Rooms & Luxury Suites</h2>
+            <p>Manage inventory, rates, housekeeping status, and suite tiers</p>
+          </div>
+          <div class="header-actions-group">
+            <button class="btn btn-primary" id="btn-add-room-modal" onclick="openModal('add-room-modal')">
+              + Add New Room
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <div class="filter-pills" id="rooms-filter-pills">
+            <button class="filter-pill active" data-filter="ALL">All Suites</button>
+            <button class="filter-pill" data-filter="AVAILABLE">Available</button>
+            <button class="filter-pill" data-filter="OCCUPIED">Occupied</button>
+            <button class="filter-pill" data-filter="MAINTENANCE">Maintenance</button>
+          </div>
+        </div>
+
+        <!-- Rooms Grid -->
+        <div class="rooms-grid" id="rooms-grid-container">
+          <!-- Populated via app.js -->
+        </div>
+      </section>
+
+      <!-- 3. RESERVATIONS TAB -->
+      <section class="tab-pane" id="tab-reservations">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>Reservation Schedule</h2>
+            <p>Central booking ledger, check-in logistics, and stay duration management</p>
+          </div>
+          <div class="header-actions-group">
+            <button class="btn btn-primary" id="btn-create-booking-modal" onclick="openCreateReservationModal()">
+              + Create Reservation
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <div class="filter-pills" id="bookings-filter-pills">
+            <button class="filter-pill active" data-filter="ALL">All Bookings</button>
+            <button class="filter-pill" data-filter="CONFIRMED">Confirmed</button>
+            <button class="filter-pill" data-filter="CANCELLED">Cancelled</button>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <div class="table-responsive">
+            <table class="luxury-table">
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>Guest Name</th>
+                  <th>Reserved Suite</th>
+                  <th>Check-In</th>
+                  <th>Check-Out</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="bookings-table-body">
+                <!-- Populated via app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. GUESTS DIRECTORY TAB -->
+      <section class="tab-pane" id="tab-guests">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>Guest Directory</h2>
+            <p>Comprehensive VIP guest profiles, contact records, and historical stays</p>
+          </div>
+          <div class="header-actions-group">
+            <button class="btn btn-primary" id="btn-add-guest-modal" onclick="openModal('add-guest-modal')">
+              + Register Guest
+            </button>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <div class="table-responsive">
+            <table class="luxury-table">
+              <thead>
+                <tr>
+                  <th>Guest ID</th>
+                  <th>Full Name</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Address</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="guests-table-body">
+                <!-- Populated via app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. BILLING & PAYMENTS TAB -->
+      <section class="tab-pane" id="tab-billing">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>Billing & Transactions</h2>
+            <p>Financial ledger, guest invoices, UPI/Card/Cash records, and payment reconciliation</p>
+          </div>
+          <div class="header-actions-group">
+            <button class="btn btn-primary" id="btn-add-payment-modal" onclick="openModal('add-payment-modal')">
+              + Record Payment
+            </button>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <div class="table-responsive">
+            <table class="luxury-table">
+              <thead>
+                <tr>
+                  <th>Transaction ID</th>
+                  <th>Booking Reference</th>
+                  <th>Amount</th>
+                  <th>Payment Method</th>
+                  <th>Payment Status</th>
+                  <th>Timestamp</th>
+                </tr>
+              </thead>
+              <tbody id="payments-table-body">
+                <!-- Populated via app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. STAFF & OPERATIONS TAB -->
+      <section class="tab-pane" id="tab-staff">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>Staff & Hotel Personnel</h2>
+            <p>Team directory across Front Desk, Housekeeping, Concierge, and Executive management</p>
+          </div>
+          <div class="header-actions-group">
+            <button class="btn btn-primary" id="btn-add-staff-modal" onclick="openModal('add-staff-modal')">
+              + Add Staff Member
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <div class="filter-pills" id="staff-filter-pills">
+            <button class="filter-pill active" data-filter="ALL">All Departments</button>
+            <button class="filter-pill" data-filter="Front Desk">Front Desk</button>
+            <button class="filter-pill" data-filter="Housekeeping">Housekeeping</button>
+            <button class="filter-pill" data-filter="Food & Beverage">F&B</button>
+            <button class="filter-pill" data-filter="Management">Management</button>
+          </div>
+        </div>
+
+        <div class="metrics-grid" id="staff-grid-container">
+          <!-- Populated via app.js -->
+        </div>
+      </section>
+
+      <!-- 7. USER ACCOUNTS TAB -->
+      <section class="tab-pane" id="tab-users">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>System Accounts & Access</h2>
+            <p>Admin, Staff, and Operator login credentials with Spring Security RBAC</p>
+          </div>
+          <div class="header-actions-group">
+            <button class="btn btn-primary" id="btn-add-user-modal" onclick="openModal('add-user-modal')">
+              + Create User
+            </button>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <div class="table-responsive">
+            <table class="luxury-table">
+              <thead>
+                <tr>
+                  <th>User ID</th>
+                  <th>Username</th>
+                  <th>System Role</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="users-table-body">
+                <!-- Populated via app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. SYSTEM & API SETTINGS TAB -->
+      <section class="tab-pane" id="tab-settings">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>System & API Configuration</h2>
+            <p>Connect with Spring Boot backend at port 8080 or toggle demonstration mode</p>
+          </div>
+        </div>
+
+        <div class="panel-card" style="max-width: 760px; padding: 26px;">
+          <h3 style="margin-bottom: 14px;">Spring Boot REST API Endpoint</h3>
+          <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 20px;">
+            Configure the target address where your Spring Boot backend runs. Default is <code>http://localhost:8080</code>.
+          </p>
+
+          <div class="form-group" style="margin-bottom: 20px;">
+            <label for="settings-api-url">API Base URL</label>
+            <div style="display: flex; gap: 12px;">
+              <input type="text" id="settings-api-url" class="form-control" value="http://localhost:8080" placeholder="http://localhost:8080" />
+              <button class="btn btn-primary" id="btn-save-settings">Save URL</button>
+              <button class="btn btn-secondary" id="btn-test-ping">Ping Backend</button>
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid var(--border-subtle); padding-top: 24px; margin-top: 24px;">
+            <h4 style="font-size: 1.05rem; margin-bottom: 8px;">1-Click Database Seeder</h4>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 16px;">
+              If your PostgreSQL database is newly initialized, populate it with luxury suites, guest directory, bookings, and staff records.
+            </p>
+            <button class="btn btn-secondary" id="btn-seed-data">
+              🌱 Populate Spring Boot Database with 5-Star Sample Data
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- =========================================================================
+     MODAL WINDOWS
+     ========================================================================= -->
+
+<!-- LOGIN MODAL -->
+<div class="modal-backdrop" id="login-modal">
+  <div class="modal-container" style="max-width: 440px;">
+    <div class="modal-header">
+      <h3>Operator Portal Login</h3>
+      <button class="modal-close-btn" onclick="closeModal('login-modal')">×</button>
+    </div>
+    <form id="login-form">
+      <div class="modal-body">
+        <p style="color: var(--text-secondary); font-size: 0.86rem;">
+          Authenticate with Spring Boot JWT security to execute administrative updates.
+        </p>
+
+        <div class="form-group">
+          <label for="login-username">Username</label>
+          <input type="text" id="login-username" name="username" class="form-control" required value="admin" />
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" class="form-control" required value="admin123" />
+        </div>
+
+        <div style="background: rgba(216, 176, 76, 0.1); border: 1px solid var(--border-gold); padding: 10px 14px; border-radius: var(--radius-md); font-size: 0.78rem; color: var(--gold-300);">
+          💡 Default Admin: <strong>admin</strong> / <strong>admin123</strong>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="handleLogout()">Sign Out</button>
+        <button type="submit" class="btn btn-primary" id="btn-login-submit">Sign In</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ADD ROOM MODAL -->
+<div class="modal-backdrop" id="add-room-modal">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h3>Add New Room Suite</h3>
+      <button class="modal-close-btn" onclick="closeModal('add-room-modal')">×</button>
+    </div>
+    <form id="form-add-room">
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="room-input-number">Room Number *</label>
+            <input type="text" id="room-input-number" name="roomNumber" class="form-control" required placeholder="e.g. 501" />
+          </div>
+          <div class="form-group">
+            <label for="room-input-type">Room / Suite Type *</label>
+            <select id="room-input-type" name="roomType" class="form-control" required>
+              <option value="Deluxe King Suite">Deluxe King Suite</option>
+              <option value="Executive Skyline Suite">Executive Skyline Suite</option>
+              <option value="Grand Presidential Suite">Grand Presidential Suite</option>
+              <option value="Royal Penthouse Suite">Royal Penthouse Suite</option>
+              <option value="Standard Club Room">Standard Club Room</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="room-input-price">Price per Night (₹) *</label>
+            <input type="number" id="room-input-price" name="price" class="form-control" step="100" min="500" required placeholder="e.g. 8500" />
+          </div>
+          <div class="form-group">
+            <label for="room-input-status">Initial Status *</label>
+            <select id="room-input-status" name="status" class="form-control" required>
+              <option value="AVAILABLE">Available</option>
+              <option value="OCCUPIED">Occupied</option>
+              <option value="MAINTENANCE">Maintenance</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeModal('add-room-modal')">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="btn-save-room">Save Room</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ADD GUEST MODAL -->
+<div class="modal-backdrop" id="add-guest-modal">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h3>Register VIP Guest</h3>
+      <button class="modal-close-btn" onclick="closeModal('add-guest-modal')">×</button>
+    </div>
+    <form id="form-add-guest">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="guest-input-name">Guest Full Name *</label>
+          <input type="text" id="guest-input-name" name="name" class="form-control" required placeholder="e.g. Lady Clara Ravenscroft" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="guest-input-email">Email Address *</label>
+            <input type="email" id="guest-input-email" name="email" class="form-control" required placeholder="clara@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="guest-input-phone">Phone Number (10 digits) *</label>
+            <input type="tel" id="guest-input-phone" name="phone" class="form-control" pattern="[0-9]{10}" required placeholder="9876543210" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="guest-input-address">Address / City *</label>
+          <textarea id="guest-input-address" name="address" class="form-control" required placeholder="Permanent residence or country"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeModal('add-guest-modal')">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="btn-save-guest">Register Guest</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- CREATE RESERVATION MODAL -->
+<div class="modal-backdrop" id="create-booking-modal">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h3>Create Suite Reservation</h3>
+      <button class="modal-close-btn" onclick="closeModal('create-booking-modal')">×</button>
+    </div>
+    <form id="form-create-booking">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="booking-guest-select">Guest *</label>
+          <select id="booking-guest-select" name="guestId" class="form-control" required>
+            <!-- Populated via JS -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="booking-room-select">Suite Room *</label>
+          <select id="booking-room-select" name="roomId" class="form-control" required>
+            <!-- Populated via JS -->
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="booking-checkin">Check-in Date *</label>
+            <input type="date" id="booking-checkin" name="checkInDate" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="booking-checkout">Check-out Date *</label>
+            <input type="date" id="booking-checkout" name="checkOutDate" class="form-control" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="booking-guests-count">Number of Guests *</label>
+          <input type="number" id="booking-guests-count" name="numberOfGuests" class="form-control" value="2" min="1" max="10" required />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeModal('create-booking-modal')">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="btn-save-booking">Confirm Reservation</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- RECORD PAYMENT MODAL -->
+<div class="modal-backdrop" id="add-payment-modal">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h3>Record Payment Transaction</h3>
+      <button class="modal-close-btn" onclick="closeModal('add-payment-modal')">×</button>
+    </div>
+    <form id="form-add-payment">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="payment-booking-id">Booking ID *</label>
+          <input type="number" id="payment-booking-id" name="bookingId" class="form-control" required placeholder="e.g. 1" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="payment-amount">Amount (₹) *</label>
+            <input type="number" id="payment-amount" name="amount" class="form-control" step="10" min="1" required placeholder="e.g. 15000" />
+          </div>
+          <div class="form-group">
+            <label for="payment-method">Payment Method *</label>
+            <select id="payment-method" name="paymentMethod" class="form-control" required>
+              <option value="CARD">Credit / Debit Card</option>
+              <option value="UPI">UPI / QR Payment</option>
+              <option value="CASH">Cash</option>
+              <option value="NET_BANKING">Net Banking</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="payment-status">Status *</label>
+          <select id="payment-status" name="paymentStatus" class="form-control" required>
+            <option value="PAID">Paid (Success)</option>
+            <option value="PENDING">Pending Verification</option>
+            <option value="REFUNDED">Refunded</option>
+            <option value="FAILED">Failed</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeModal('add-payment-modal')">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="btn-save-payment">Process Payment</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ADD STAFF MODAL -->
+<div class="modal-backdrop" id="add-staff-modal">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h3>Add Staff Member</h3>
+      <button class="modal-close-btn" onclick="closeModal('add-staff-modal')">×</button>
+    </div>
+    <form id="form-add-staff">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="staff-input-name">Full Name *</label>
+          <input type="text" id="staff-input-name" name="name" class="form-control" required placeholder="e.g. Julian Hayes" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="staff-input-email">Email Address *</label>
+            <input type="email" id="staff-input-email" name="email" class="form-control" required placeholder="julian@grandstay.com" />
+          </div>
+          <div class="form-group">
+            <label for="staff-input-phone">Phone Number (10 digits) *</label>
+            <input type="tel" id="staff-input-phone" name="phone" class="form-control" pattern="[0-9]{10}" required placeholder="9870055667" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="staff-input-dept">Department *</label>
+            <select id="staff-input-dept" name="department" class="form-control" required>
+              <option value="Front Desk">Front Desk</option>
+              <option value="Housekeeping">Housekeeping</option>
+              <option value="Food & Beverage">Food & Beverage</option>
+              <option value="Concierge">Concierge</option>
+              <option value="Management">Management</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="staff-input-pos">Position Title *</label>
+            <input type="text" id="staff-input-pos" name="position" class="form-control" required placeholder="e.g. Concierge Supervisor" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeModal('add-staff-modal')">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="btn-save-staff">Save Member</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ADD USER MODAL -->
+<div class="modal-backdrop" id="add-user-modal">
+  <div class="modal-container" style="max-width: 440px;">
+    <div class="modal-header">
+      <h3>Create System User</h3>
+      <button class="modal-close-btn" onclick="closeModal('add-user-modal')">×</button>
+    </div>
+    <form id="form-add-user">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="user-input-username">Username *</label>
+          <input type="text" id="user-input-username" name="username" class="form-control" minlength="3" required placeholder="e.g. receptionist_alex" />
+        </div>
+
+        <div class="form-group">
+          <label for="user-input-password">Password *</label>
+          <input type="password" id="user-input-password" name="password" class="form-control" minlength="6" required placeholder="Min 6 characters" />
+        </div>
+
+        <div class="form-group">
+          <label for="user-input-role">Assigned Role *</label>
+          <select id="user-input-role" name="role" class="form-control" required>
+            <option value="STAFF">STAFF (Front Desk / Housekeeping)</option>
+            <option value="ADMIN">ADMIN (Full Permissions)</option>
+            <option value="USER">USER (Read-only)</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeModal('add-user-modal')">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="btn-save-user">Create User</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div id="toast-container" aria-live="polite"></div>
+
+<script>
+/**
+ * GRANDSTAY ROYALE — LUXURY HOTEL MANAGEMENT SYSTEM
+ * Dynamic Single Page Application Architecture
+ */
+
+// =============================================================================
+// STATE & CONFIGURATION
+// =============================================================================
+
+const AppConfig = {
+  getApiBase: () => localStorage.getItem('grandstay_api_url') || 'http://localhost:8080',
+  setApiBase: (url) => localStorage.setItem('grandstay_api_url', url),
+  getToken: () => localStorage.getItem('grandstay_jwt_token') || '',
+  setToken: (token) => localStorage.setItem('grandstay_jwt_token', token),
+  clearToken: () => {
+    localStorage.removeItem('grandstay_jwt_token');
+    localStorage.removeItem('grandstay_user');
+  },
+  getUser: () => {
+    try {
+      return JSON.parse(localStorage.getItem('grandstay_user') || 'null');
+    } catch {
+      return null;
+    }
+  },
+  setUser: (user) => localStorage.setItem('grandstay_user', JSON.stringify(user)),
+};
+
+const AppState = {
+  activeTab: 'dashboard',
+  isOnline: false,
+  usingDemoMode: false,
+  rooms: [],
+  guests: [],
+  bookings: [],
+  payments: [],
+  staff: [],
+  users: [],
+  stats: {
+    totalRooms: 0,
+    availableRooms: 0,
+    occupiedRooms: 0,
+    maintenanceRooms: 0,
+    totalGuests: 0,
+    totalBookings: 0,
+    confirmedBookings: 0,
+    cancelledBookings: 0,
+    totalRevenue: 0,
+  },
+  filterRooms: 'ALL',
+  filterBookings: 'ALL',
+  filterStaff: 'ALL',
+  searchQuery: '',
+};
+
+// =============================================================================
+// SEED & DEMO DATA (Used for offline preview or 1-click seeding)
+// =============================================================================
+
+const DemoData = {
+  rooms: [
+    { id: 1, roomNumber: "101", roomType: "Deluxe King Suite", price: 6500.0, status: "AVAILABLE" },
+    { id: 2, roomNumber: "102", roomType: "Deluxe Twin Suite", price: 6000.0, status: "OCCUPIED" },
+    { id: 3, roomNumber: "201", roomType: "Executive Skyline Suite", price: 9500.0, status: "AVAILABLE" },
+    { id: 4, roomNumber: "202", roomType: "Executive Skyline Suite", price: 9500.0, status: "OCCUPIED" },
+    { id: 5, roomNumber: "301", roomType: "Grand Presidential Suite", price: 24000.0, status: "AVAILABLE" },
+    { id: 6, roomNumber: "302", roomType: "Royal Penthouse Suite", price: 32000.0, status: "MAINTENANCE" },
+    { id: 7, roomNumber: "401", roomType: "Standard Club Room", price: 4500.0, status: "AVAILABLE" },
+    { id: 8, roomNumber: "402", roomType: "Standard Club Room", price: 4500.0, status: "OCCUPIED" }
+  ],
+  guests: [
+    { id: 1, name: "Alexander Wright", email: "alex.wright@executive.com", phone: "9876543210", address: "42 Park Avenue, Mumbai" },
+    { id: 2, name: "Dr. Evelyn Vance", email: "evelyn.vance@horizon.org", phone: "9823456789", address: "18 Jubilee Hills, Hyderabad" },
+    { id: 3, name: "Rohit Malhotra", email: "rohit.m@technologies.in", phone: "9845123456", address: "88 Indiranagar, Bengaluru" },
+    { id: 4, name: "Elena Rostova", email: "elena.rostova@luxurytravel.com", phone: "9811223344", address: "The Palm Jumeirah, Dubai" }
+  ],
+  bookings: [
+    { id: 1, guestId: 1, roomId: 2, checkInDate: "2026-10-09", checkOutDate: "2026-10-14", numberOfGuests: 2, status: "CONFIRMED" },
+    { id: 2, guestId: 2, roomId: 4, checkInDate: "2026-10-08", checkOutDate: "2026-10-12", numberOfGuests: 1, status: "CONFIRMED" },
+    { id: 3, guestId: 3, roomId: 8, checkInDate: "2026-10-10", checkOutDate: "2026-10-15", numberOfGuests: 2, status: "CONFIRMED" },
+    { id: 4, guestId: 4, roomId: 1, checkInDate: "2026-10-12", checkOutDate: "2026-10-18", numberOfGuests: 2, status: "CONFIRMED" }
+  ],
+  payments: [
+    { id: 1, bookingId: 1, amount: 30000.0, paymentMethod: "CARD", paymentStatus: "PAID", paymentDate: "2026-10-09T14:30:00" },
+    { id: 2, bookingId: 2, amount: 38000.0, paymentMethod: "UPI", paymentStatus: "PAID", paymentDate: "2026-10-08T11:15:00" },
+    { id: 3, bookingId: 3, amount: 22500.0, paymentMethod: "NET_BANKING", paymentStatus: "PENDING", paymentDate: "2026-10-10T09:40:00" }
+  ],
+  staff: [
+    { id: 1, name: "Marcus Sterling", email: "marcus.s@grandstay.com", phone: "9870011223", department: "Management", position: "General Manager" },
+    { id: 2, name: "Priya Sharma", email: "priya.sharma@grandstay.com", phone: "9870022334", department: "Front Desk", position: "Front Office Director" },
+    { id: 3, name: "Jean-Pierre Laurent", email: "jp.laurent@grandstay.com", phone: "9870033445", department: "Food & Beverage", position: "Executive Chef" },
+    { id: 4, name: "Sunita Roy", email: "sunita.roy@grandstay.com", phone: "9870044556", department: "Housekeeping", position: "Executive Housekeeper" }
+  ],
+  users: [
+    { id: 1, username: "admin", role: "ADMIN" },
+    { id: 2, name: "frontdesk_staff", username: "staff_priya", role: "STAFF" }
+  ]
+};
+
+// =============================================================================
+// API CLIENT
+// =============================================================================
+
+async function apiRequest(endpoint, options = {}) {
+  const baseUrl = AppConfig.getApiBase();
+  const token = AppConfig.getToken();
+
+  const headers = {
+    'Content-Type': 'application/json',
+    ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
+    ...(options.headers || {}),
+  };
+
+  try {
+    const response = await fetch(`${baseUrl}${endpoint}`, {
+      ...options,
+      headers,
+    });
+
+    if (response.status === 401 || response.status === 403) {
+      if (!endpoint.includes('/api/auth/login')) {
+        console.warn('Authentication token expired or unauthorized.');
+      }
+    }
+
+    if (!response.ok) {
+      let errorMsg = `HTTP Error ${response.status}`;
+      try {
+        const errJson = await response.json();
+        errorMsg = errJson.message || JSON.stringify(errJson);
+      } catch {
+        errorMsg = await response.text() || errorMsg;
+      }
+      throw new Error(errorMsg);
+    }
+
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      return await response.json();
+    }
+    return await response.text();
+  } catch (error) {
+    throw error;
+  }
+}
+
+// =============================================================================
+// NOTIFICATIONS / TOASTS
+// =============================================================================
+
+function showToast(title, message, type = 'info') {
+  const container = document.getElementById('toast-container');
+  if (!container) return;
+
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+
+  const iconMap = {
+    success: '✓',
+    error: '✕',
+    info: 'ℹ',
+    warning: '⚠',
+  };
+
+  toast.innerHTML = `
+    <div class="toast-icon">${iconMap[type] || 'ℹ'}</div>
+    <div class="toast-content">
+      <div class="toast-title">${escapeHtml(title)}</div>
+      <div class="toast-message">${escapeHtml(message)}</div>
+    </div>
+  `;
+
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateX(50px)';
+    setTimeout(() => toast.remove(), 300);
+  }, 4200);
+}
+
+function escapeHtml(text) {
+  if (text === null || text === undefined) return '';
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function formatCurrency(amount) {
+  const num = Number(amount) || 0;
+  return new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    maximumFractionDigits: 0,
+  }).format(num);
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return 'N/A';
+  try {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('en-IN', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric'
+    });
+  } catch {
+    return dateStr;
+  }
+}
+
+// =============================================================================
+// AUTHENTICATION CONTROLLER
+// =============================================================================
+
+async function handleLogin(username, password) {
+  try {
+    const data = await apiRequest('/api/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ username, password }),
+    });
+
+    if (data.token) {
+      AppConfig.setToken(data.token);
+      AppConfig.setUser({
+        id: data.id,
+        username: data.username,
+        role: data.role,
+      });
+
+      showToast('Welcome Back', `Logged in successfully as ${data.username} (${data.role})`, 'success');
+      closeModal('login-modal');
+      updateAuthUI();
+      await fetchAllData();
+      return true;
+    }
+  } catch (err) {
+    // If backend is offline or credentials failed
+    if (!AppState.isOnline) {
+      // Allow demo login
+      if (username === 'admin' && password === 'admin123') {
+        AppConfig.setToken('demo_admin_jwt_token_sample');
+        AppConfig.setUser({ id: 1, username: 'admin', role: 'ADMIN' });
+        showToast('Demo Mode Activated', 'Logged in as Admin (Demo Session)', 'info');
+        closeModal('login-modal');
+        updateAuthUI();
+        await fetchAllData();
+        return true;
+      }
+    }
+    showToast('Authentication Failed', err.message || 'Invalid username or password', 'error');
+    throw err;
+  }
+}
+
+function handleLogout() {
+  AppConfig.clearToken();
+  updateAuthUI();
+  showToast('Logged Out', 'You have been signed out of GrandStay Royale', 'info');
+  // Re-fetch data or switch to demo
+  fetchAllData();
+}
+
+function updateAuthUI() {
+  const user = AppConfig.getUser();
+  const userNameElem = document.getElementById('header-user-name');
+  const userRoleElem = document.getElementById('header-user-role');
+  const userAvatarElem = document.getElementById('header-user-avatar');
+
+  if (user && userNameElem && userRoleElem) {
+    userNameElem.textContent = user.username;
+    userRoleElem.textContent = user.role;
+    if (userAvatarElem) {
+      userAvatarElem.textContent = user.username.substring(0, 2).toUpperCase();
+    }
+  } else if (userNameElem && userRoleElem) {
+    userNameElem.textContent = 'Guest / Demo';
+    userRoleElem.textContent = 'OPERATOR';
+    if (userAvatarElem) {
+      userAvatarElem.textContent = 'GS';
+    }
+  }
+}
+
+// =============================================================================
+// BACKEND SYNC & HEALTH CHECK
+// =============================================================================
+
+async function checkBackendHealth() {
+  const pill = document.getElementById('connection-status-pill');
+  const text = document.getElementById('connection-status-text');
+
+  try {
+    const res = await fetch(`${AppConfig.getApiBase()}/v3/api-docs`, { method: 'GET' });
+    if (res.ok || res.status === 401 || res.status === 403) {
+      AppState.isOnline = true;
+      AppState.usingDemoMode = false;
+      if (pill) {
+        pill.className = 'connection-pill online';
+      }
+      if (text) text.textContent = 'Spring Boot (Live)';
+      return true;
+    }
+  } catch {
+    // API not reachable
+  }
+
+  AppState.isOnline = false;
+  AppState.usingDemoMode = true;
+  if (pill) {
+    pill.className = 'connection-pill demo';
+  }
+  if (text) text.textContent = 'Demo Mode (Offline)';
+  return false;
+}
+
+// =============================================================================
+// DATA FETCHING & SYNC
+// =============================================================================
+
+async function fetchAllData() {
+  const isOnline = await checkBackendHealth();
+
+  if (isOnline) {
+    try {
+      // 1. Fetch Admin Dashboard Stats
+      try {
+        const stats = await apiRequest('/api/admin/dashboard');
+        AppState.stats = stats;
+      } catch (err) {
+        console.warn('Dashboard stats requires Admin role or failed:', err);
+      }
+
+      // 2. Fetch Rooms
+      const rooms = await apiRequest('/api/rooms');
+      AppState.rooms = rooms || [];
+
+      // 3. Fetch Guests
+      const guests = await apiRequest('/api/guests');
+      AppState.guests = guests || [];
+
+      // 4. Fetch Bookings
+      const bookings = await apiRequest('/api/bookings');
+      AppState.bookings = bookings || [];
+
+      // 5. Fetch Payments
+      try {
+        const payments = await apiRequest('/api/payments');
+        AppState.payments = payments || [];
+      } catch {
+        AppState.payments = [];
+      }
+
+      // 6. Fetch Staff
+      try {
+        const staff = await apiRequest('/api/staff');
+        AppState.staff = staff || [];
+      } catch {
+        AppState.staff = [];
+      }
+
+      // 7. Fetch Users (if admin)
+      try {
+        const users = await apiRequest('/api/users');
+        AppState.users = users || [];
+      } catch {
+        AppState.users = [];
+      }
+
+      recalculateMetrics();
+      renderAllViews();
+      return;
+    } catch (err) {
+      console.warn('Live API request encountered error, falling back to cached/demo data:', err);
+    }
+  }
+
+  // Fallback to Demo Data
+  AppState.rooms = [...DemoData.rooms];
+  AppState.guests = [...DemoData.guests];
+  AppState.bookings = [...DemoData.bookings];
+  AppState.payments = [...DemoData.payments];
+  AppState.staff = [...DemoData.staff];
+  AppState.users = [...DemoData.users];
+
+  recalculateMetrics();
+  renderAllViews();
+}
+
+function recalculateMetrics() {
+  const rooms = AppState.rooms;
+  const available = rooms.filter(r => r.status === 'AVAILABLE').length;
+  const occupied = rooms.filter(r => r.status === 'OCCUPIED').length;
+  const maintenance = rooms.filter(r => r.status === 'MAINTENANCE').length;
+
+  const totalRevenue = AppState.payments
+    .filter(p => p.paymentStatus === 'PAID')
+    .reduce((sum, p) => sum + (Number(p.amount) || 0), 0);
+
+  AppState.stats = {
+    totalRooms: rooms.length,
+    availableRooms: available,
+    occupiedRooms: occupied,
+    maintenanceRooms: maintenance,
+    totalGuests: AppState.guests.length,
+    totalBookings: AppState.bookings.length,
+    confirmedBookings: AppState.bookings.filter(b => b.status === 'CONFIRMED').length,
+    cancelledBookings: AppState.bookings.filter(b => b.status === 'CANCELLED').length,
+    totalRevenue: totalRevenue || AppState.stats.totalRevenue || 0,
+  };
+}
+
+// =============================================================================
+// SEED LIVE BACKEND UTILITY
+// =============================================================================
+
+async function seedBackendWithSampleData() {
+  if (!AppState.isOnline) {
+    showToast('Cannot Seed', 'Backend server is offline. Please launch Spring Boot on port 8080.', 'error');
+    return;
+  }
+
+  showToast('Seeding Database', 'Creating luxury sample rooms, guests, bookings, and staff...', 'info');
+
+  try {
+    // 1. Seed Rooms
+    for (const room of DemoData.rooms) {
+      try {
+        await apiRequest('/api/rooms', {
+          method: 'POST',
+          body: JSON.stringify({
+            roomNumber: room.roomNumber,
+            roomType: room.roomType,
+            price: room.price,
+            status: room.status,
+          }),
+        });
+      } catch (e) {
+        console.warn(`Room ${room.roomNumber} may already exist:`, e.message);
+      }
+    }
+
+    // 2. Seed Guests
+    const createdGuests = [];
+    for (const guest of DemoData.guests) {
+      try {
+        const res = await apiRequest('/api/guests', {
+          method: 'POST',
+          body: JSON.stringify({
+            name: guest.name,
+            email: guest.email,
+            phone: guest.phone,
+            address: guest.address,
+          }),
+        });
+        createdGuests.push(res);
+      } catch (e) {
+        console.warn(`Guest ${guest.name} error:`, e.message);
+      }
+    }
+
+    // 3. Seed Staff
+    for (const member of DemoData.staff) {
+      try {
+        await apiRequest('/api/staff', {
+          method: 'POST',
+          body: JSON.stringify({
+            name: member.name,
+            email: member.email,
+            phone: member.phone,
+            department: member.department,
+            position: member.position,
+          }),
+        });
+      } catch (e) {
+        console.warn(`Staff ${member.name} error:`, e.message);
+      }
+    }
+
+    showToast('Success!', 'Sample hotel data has been populated into your PostgreSQL database!', 'success');
+    await fetchAllData();
+  } catch (err) {
+    showToast('Seeding Incomplete', err.message, 'error');
+  }
+}
+
+// =============================================================================
+// RENDERERS: VIEWS & COMPONENTS
+// =============================================================================
+
+function renderAllViews() {
+  renderDashboard();
+  renderRooms();
+  renderBookings();
+  renderGuests();
+  renderPayments();
+  renderStaff();
+  renderUsers();
+}
+
+// 1. DASHBOARD VIEW
+function renderDashboard() {
+  const { totalRooms, availableRooms, occupiedRooms, totalGuests, totalBookings, totalRevenue } = AppState.stats;
+
+  // Stat values
+  const revElem = document.getElementById('stat-total-revenue');
+  const occElem = document.getElementById('stat-occupancy-rate');
+  const bookElem = document.getElementById('stat-total-bookings');
+  const guestElem = document.getElementById('stat-total-guests');
+
+  if (revElem) revElem.textContent = formatCurrency(totalRevenue);
+  if (bookElem) bookElem.textContent = totalBookings;
+  if (guestElem) guestElem.textContent = totalGuests;
+
+  const rate = totalRooms > 0 ? Math.round((occupiedRooms / totalRooms) * 100) : 0;
+  if (occElem) occElem.textContent = `${rate}%`;
+
+  // Occupancy Banner
+  const occBarFill = document.getElementById('occupancy-bar-fill');
+  const occBannerPct = document.getElementById('occupancy-banner-percentage');
+  const occAvailableTxt = document.getElementById('occupancy-available-count');
+  const occOccupiedTxt = document.getElementById('occupancy-occupied-count');
+  const occMaintTxt = document.getElementById('occupancy-maintenance-count');
+
+  if (occBarFill) occBarFill.style.width = `${rate}%`;
+  if (occBannerPct) occBannerPct.textContent = `${rate}% Occupied`;
+  if (occAvailableTxt) occAvailableTxt.textContent = `${availableRooms} Available`;
+  if (occOccupiedTxt) occOccupiedTxt.textContent = `${occupiedRooms} Occupied`;
+  if (occMaintTxt) occMaintTxt.textContent = `${AppState.stats.maintenanceRooms || 0} Maintenance`;
+
+  // Mini Room Floor Matrix
+  const floorMatrix = document.getElementById('dashboard-floor-matrix');
+  if (floorMatrix) {
+    if (AppState.rooms.length === 0) {
+      floorMatrix.innerHTML = `<div style="grid-column: 1/-1; padding: 20px; text-align: center; color: var(--text-tertiary);">No rooms configured yet.</div>`;
+    } else {
+      floorMatrix.innerHTML = AppState.rooms.map(room => {
+        const statusClass = room.status.toLowerCase();
+        return `
+          <div class="floor-room-tile ${statusClass}" title="Room ${escapeHtml(room.roomNumber)} - ${escapeHtml(room.roomType)} (${room.status})" onclick="switchTab('rooms')">
+            <span class="room-tile-num">${escapeHtml(room.roomNumber)}</span>
+            <span class="room-tile-badge">${room.status.substring(0, 3)}</span>
+          </div>
+        `;
+      }).join('');
+    }
+  }
+
+  // Recent Bookings Table
+  const recentTable = document.getElementById('dashboard-recent-bookings');
+  if (recentTable) {
+    const recent = [...AppState.bookings].slice(0, 5);
+    if (recent.length === 0) {
+      recentTable.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-tertiary); padding: 24px;">No reservations found.</td></tr>`;
+    } else {
+      recentTable.innerHTML = recent.map(booking => {
+        const guest = AppState.guests.find(g => g.id === booking.guestId) || { name: `Guest #${booking.guestId}` };
+        const room = AppState.rooms.find(r => r.id === booking.roomId) || { roomNumber: `#${booking.roomId}`, roomType: 'Suite' };
+        return `
+          <tr>
+            <td><strong>#BKG-${booking.id}</strong></td>
+            <td>
+              <div style="font-weight: 600; color: var(--text-primary);">${escapeHtml(guest.name)}</div>
+              <div style="font-size: 0.76rem; color: var(--text-tertiary);">${escapeHtml(guest.phone || '')}</div>
+            </td>
+            <td>
+              <span class="badge badge-occupied">Room ${escapeHtml(room.roomNumber)}</span>
+              <div style="font-size: 0.74rem; color: var(--text-tertiary); margin-top: 2px;">${escapeHtml(room.roomType)}</div>
+            </td>
+            <td>${formatDate(booking.checkInDate)} → ${formatDate(booking.checkOutDate)}</td>
+            <td>${booking.numberOfGuests} Guests</td>
+            <td><span class="badge badge-${booking.status.toLowerCase()}">${booking.status}</span></td>
+          </tr>
+        `;
+      }).join('');
+    }
+  }
+}
+
+// 2. ROOMS VIEW
+function renderRooms() {
+  const container = document.getElementById('rooms-grid-container');
+  if (!container) return;
+
+  let filtered = [...AppState.rooms];
+  if (AppState.filterRooms !== 'ALL') {
+    filtered = filtered.filter(r => r.status === AppState.filterRooms);
+  }
+
+  if (AppState.searchQuery) {
+    const q = AppState.searchQuery.toLowerCase();
+    filtered = filtered.filter(r => 
+      (r.roomNumber && r.roomNumber.toLowerCase().includes(q)) ||
+      (r.roomType && r.roomType.toLowerCase().includes(q))
+    );
+  }
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; background: var(--bg-surface); border-radius: var(--radius-lg); border: 1px dashed var(--border-subtle);">
+        <h4 style="font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 8px;">No rooms match your filter</h4>
+        <p style="color: var(--text-tertiary); font-size: 0.88rem; margin-bottom: 20px;">Try changing filter options or create a new room suite.</p>
+        <button class="btn btn-primary" onclick="openModal('add-room-modal')">+ Add Room</button>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = filtered.map(room => {
+    const statusClass = room.status.toLowerCase();
+    return `
+      <div class="room-card">
+        <div class="room-card-image-wrap">
+          <img src="/assets/suite.jpg" alt="${escapeHtml(room.roomType)}" class="room-card-image" onerror="this.style.display='none'" />
+          <div class="room-badge-overlay">
+            <span class="badge badge-${statusClass}">${room.status}</span>
+          </div>
+          <div class="room-price-overlay">
+            ${formatCurrency(room.price)}<span style="font-size: 0.75rem; font-weight: normal; color: var(--text-tertiary);"> / night</span>
+          </div>
+        </div>
+
+        <div class="room-card-body">
+          <div class="room-card-header">
+            <div class="room-number">Suite ${escapeHtml(room.roomNumber)}</div>
+          </div>
+          <div class="room-type">${escapeHtml(room.roomType)}</div>
+
+          <div class="room-card-footer">
+            <div style="display: flex; gap: 6px; align-items: center;">
+              <select class="form-control" style="height: 32px; padding: 0 8px; font-size: 0.78rem; width: auto;" onchange="changeRoomStatus(${room.id}, this.value)">
+                <option value="AVAILABLE" ${room.status === 'AVAILABLE' ? 'selected' : ''}>Available</option>
+                <option value="OCCUPIED" ${room.status === 'OCCUPIED' ? 'selected' : ''}>Occupied</option>
+                <option value="MAINTENANCE" ${room.status === 'MAINTENANCE' ? 'selected' : ''}>Maintenance</option>
+              </select>
+            </div>
+
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-sm btn-secondary" onclick="openEditRoomModal(${room.id})" title="Edit Room">✏️</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteRoom(${room.id})" title="Delete Room">🗑️</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// 3. BOOKINGS VIEW
+function renderBookings() {
+  const tbody = document.getElementById('bookings-table-body');
+  if (!tbody) return;
+
+  let filtered = [...AppState.bookings];
+  if (AppState.filterBookings !== 'ALL') {
+    filtered = filtered.filter(b => b.status === AppState.filterBookings);
+  }
+
+  if (AppState.searchQuery) {
+    const q = AppState.searchQuery.toLowerCase();
+    filtered = filtered.filter(b => {
+      const g = AppState.guests.find(x => x.id === b.guestId);
+      const r = AppState.rooms.find(x => x.id === b.roomId);
+      return (
+        (g && g.name.toLowerCase().includes(q)) ||
+        (r && r.roomNumber.toLowerCase().includes(q)) ||
+        String(b.id).includes(q)
+      );
+    });
+  }
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-tertiary); padding: 40px;">No reservations found matching criteria.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = filtered.map(booking => {
+    const guest = AppState.guests.find(g => g.id === booking.guestId) || { name: `Guest #${booking.guestId}` };
+    const room = AppState.rooms.find(r => r.id === booking.roomId) || { roomNumber: `#${booking.roomId}`, roomType: 'Suite' };
+    const statusClass = booking.status.toLowerCase();
+
+    return `
+      <tr>
+        <td><strong>#BKG-${booking.id}</strong></td>
+        <td>
+          <div style="font-weight: 600; color: var(--text-primary);">${escapeHtml(guest.name)}</div>
+          <div style="font-size: 0.76rem; color: var(--text-tertiary);">${escapeHtml(guest.phone || '')}</div>
+        </td>
+        <td>
+          <span class="badge badge-occupied">Suite ${escapeHtml(room.roomNumber)}</span>
+          <div style="font-size: 0.74rem; color: var(--text-tertiary); margin-top: 2px;">${escapeHtml(room.roomType)}</div>
+        </td>
+        <td>
+          <div>${formatDate(booking.checkInDate)}</div>
+          <div style="font-size: 0.74rem; color: var(--text-tertiary);">Check-in</div>
+        </td>
+        <td>
+          <div>${formatDate(booking.checkOutDate)}</div>
+          <div style="font-size: 0.74rem; color: var(--text-tertiary);">Check-out</div>
+        </td>
+        <td><span class="badge badge-${statusClass}">${booking.status}</span></td>
+        <td>
+          <div style="display: flex; gap: 6px;">
+            ${booking.status !== 'CANCELLED' ? `
+              <button class="btn btn-sm btn-secondary" onclick="openPaymentForBooking(${booking.id})" title="Take Payment">💳</button>
+              <button class="btn btn-sm btn-danger" onclick="cancelBooking(${booking.id})" title="Cancel Booking">Cancel</button>
+            ` : '<span style="color: var(--text-tertiary); font-size: 0.8rem;">Cancelled</span>'}
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+// 4. GUESTS VIEW
+function renderGuests() {
+  const tbody = document.getElementById('guests-table-body');
+  if (!tbody) return;
+
+  let filtered = [...AppState.guests];
+  if (AppState.searchQuery) {
+    const q = AppState.searchQuery.toLowerCase();
+    filtered = filtered.filter(g =>
+      (g.name && g.name.toLowerCase().includes(q)) ||
+      (g.email && g.email.toLowerCase().includes(q)) ||
+      (g.phone && g.phone.includes(q))
+    );
+  }
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-tertiary); padding: 40px;">No registered guests found.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = filtered.map(guest => {
+    const guestBookings = AppState.bookings.filter(b => b.guestId === guest.id).length;
+    return `
+      <tr>
+        <td><strong>#GST-${guest.id}</strong></td>
+        <td>
+          <div style="font-weight: 600; color: var(--text-primary); font-size: 0.95rem;">${escapeHtml(guest.name)}</div>
+          <span class="badge badge-confirmed" style="margin-top: 4px; font-size: 0.68rem;">VIP Guest</span>
+        </td>
+        <td>${escapeHtml(guest.email)}</td>
+        <td>${escapeHtml(guest.phone)}</td>
+        <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${escapeHtml(guest.address || 'Not specified')}</td>
+        <td>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-sm btn-primary" onclick="openCreateReservationForGuest(${guest.id})">+ Book Suite</button>
+            <button class="btn btn-sm btn-danger" onclick="deleteGuest(${guest.id})">🗑️</button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+// 5. PAYMENTS VIEW
+function renderPayments() {
+  const tbody = document.getElementById('payments-table-body');
+  if (!tbody) return;
+
+  if (AppState.payments.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-tertiary); padding: 40px;">No payments recorded yet.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = AppState.payments.map(p => {
+    const booking = AppState.bookings.find(b => b.id === p.bookingId);
+    const guest = booking ? AppState.guests.find(g => g.id === booking.guestId) : null;
+    const guestName = guest ? guest.name : (p.bookingId ? `Booking #${p.bookingId}` : 'Walk-in');
+
+    return `
+      <tr>
+        <td><strong>#TXN-${p.id}</strong></td>
+        <td>#BKG-${p.bookingId} (${escapeHtml(guestName)})</td>
+        <td style="font-weight: 700; color: var(--gold-300);">${formatCurrency(p.amount)}</td>
+        <td><span class="badge badge-occupied">${p.paymentMethod}</span></td>
+        <td><span class="badge badge-${(p.paymentStatus || 'pending').toLowerCase()}">${p.paymentStatus}</span></td>
+        <td>${p.paymentDate ? formatDate(p.paymentDate) : 'Recently'}</td>
+      </tr>
+    `;
+  }).join('');
+}
+
+// 6. STAFF VIEW
+function renderStaff() {
+  const container = document.getElementById('staff-grid-container');
+  if (!container) return;
+
+  let filtered = [...AppState.staff];
+  if (AppState.filterStaff !== 'ALL') {
+    filtered = filtered.filter(s => s.department === AppState.filterStaff);
+  }
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-tertiary);">
+        No staff members registered in this department.
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = filtered.map(member => {
+    return `
+      <div class="stat-card" style="position: relative;">
+        <div style="display: flex; gap: 14px; align-items: center; margin-bottom: 14px;">
+          <div class="user-avatar" style="width: 46px; height: 46px; font-size: 1.1rem;">
+            ${escapeHtml(member.name.substring(0, 2).toUpperCase())}
+          </div>
+          <div>
+            <div style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700;">${escapeHtml(member.name)}</div>
+            <div style="color: var(--gold-400); font-size: 0.82rem; font-weight: 600;">${escapeHtml(member.position)}</div>
+          </div>
+        </div>
+
+        <div style="font-size: 0.82rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 6px;">
+          <div>🏢 <strong>Department:</strong> ${escapeHtml(member.department)}</div>
+          <div>✉️ <strong>Email:</strong> ${escapeHtml(member.email)}</div>
+          <div>📞 <strong>Phone:</strong> ${escapeHtml(member.phone)}</div>
+        </div>
+
+        <div style="margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: flex-end;">
+          <button class="btn btn-sm btn-danger" onclick="deleteStaff(${member.id})">Remove</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// 7. USERS VIEW
+function renderUsers() {
+  const tbody = document.getElementById('users-table-body');
+  if (!tbody) return;
+
+  if (AppState.users.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-tertiary); padding: 30px;">User accounts require Admin privilege or server connection.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = AppState.users.map(u => {
+    return `
+      <tr>
+        <td><strong>#USR-${u.id}</strong></td>
+        <td style="font-weight: 600;">${escapeHtml(u.username)}</td>
+        <td><span class="badge ${u.role === 'ADMIN' ? 'badge-confirmed' : 'badge-occupied'}">${u.role}</span></td>
+        <td>
+          ${u.username !== 'admin' ? `
+            <button class="btn btn-sm btn-danger" onclick="deleteUserAccount(${u.id})">Delete</button>
+          ` : '<span style="color: var(--gold-400); font-size: 0.78rem; font-weight: 700;">PRIMARY ROOT</span>'}
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+// =============================================================================
+// ACTIONS: ROOMS, BOOKINGS, GUESTS, PAYMENTS
+// =============================================================================
+
+async function changeRoomStatus(roomId, newStatus) {
+  if (AppState.isOnline) {
+    try {
+      await apiRequest(`/api/rooms/${roomId}/status?status=${encodeURIComponent(newStatus)}`, {
+        method: 'PUT',
+      });
+      showToast('Status Updated', `Room #${roomId} is now ${newStatus}`, 'success');
+    } catch (err) {
+      showToast('Error', err.message, 'error');
+    }
+  } else {
+    const room = AppState.rooms.find(r => r.id === roomId);
+    if (room) {
+      room.status = newStatus;
+      showToast('Updated (Demo)', `Room #${roomId} status changed to ${newStatus}`, 'info');
+    }
+  }
+
+  const room = AppState.rooms.find(r => r.id === roomId);
+  if (room) room.status = newStatus;
+  recalculateMetrics();
+  renderAllViews();
+}
+
+async function handleCreateRoom(event) {
+  event.preventDefault();
+  const form = event.target;
+  const roomData = {
+    roomNumber: form.roomNumber.value.trim(),
+    roomType: form.roomType.value.trim(),
+    price: parseFloat(form.price.value),
+    status: form.status.value,
+  };
+
+  if (AppState.isOnline) {
+    try {
+      const created = await apiRequest('/api/rooms', {
+        method: 'POST',
+        body: JSON.stringify(roomData),
+      });
+      AppState.rooms.push(created);
+      showToast('Room Created', `Room ${roomData.roomNumber} added to inventory`, 'success');
+    } catch (err) {
+      showToast('Failed to Create Room', err.message, 'error');
+      return;
+    }
+  } else {
+    const newId = (AppState.rooms.length ? Math.max(...AppState.rooms.map(r => r.id)) : 0) + 1;
+    AppState.rooms.push({ id: newId, ...roomData });
+    showToast('Room Added (Demo)', `Room ${roomData.roomNumber} created in local demo state`, 'info');
+  }
+
+  closeModal('add-room-modal');
+  form.reset();
+  recalculateMetrics();
+  renderAllViews();
+}
+
+async function deleteRoom(roomId) {
+  if (!confirm(`Are you sure you want to delete this room?`)) return;
+
+  if (AppState.isOnline) {
+    try {
+      await apiRequest(`/api/rooms/${roomId}`, { method: 'DELETE' });
+      showToast('Deleted', 'Room removed successfully', 'success');
+    } catch (err) {
+      showToast('Delete Failed', err.message, 'error');
+      return;
+    }
+  }
+
+  AppState.rooms = AppState.rooms.filter(r => r.id !== roomId);
+  recalculateMetrics();
+  renderAllViews();
+}
+
+// GUEST ACTIONS
+async function handleCreateGuest(event) {
+  event.preventDefault();
+  const form = event.target;
+  const guestData = {
+    name: form.name.value.trim(),
+    email: form.email.value.trim(),
+    phone: form.phone.value.trim(),
+    address: form.address.value.trim(),
+  };
+
+  if (!/^[0-9]{10}$/.test(guestData.phone)) {
+    showToast('Invalid Phone', 'Phone number must contain exactly 10 digits', 'error');
+    return;
+  }
+
+  if (AppState.isOnline) {
+    try {
+      const created = await apiRequest('/api/guests', {
+        method: 'POST',
+        body: JSON.stringify(guestData),
+      });
+      AppState.guests.push(created);
+      showToast('Guest Registered', `Profile created for ${guestData.name}`, 'success');
+    } catch (err) {
+      showToast('Registration Error', err.message, 'error');
+      return;
+    }
+  } else {
+    const newId = (AppState.guests.length ? Math.max(...AppState.guests.map(g => g.id)) : 0) + 1;
+    AppState.guests.push({ id: newId, ...guestData });
+    showToast('Guest Added (Demo)', `Profile created for ${guestData.name}`, 'info');
+  }
+
+  closeModal('add-guest-modal');
+  form.reset();
+  recalculateMetrics();
+  renderAllViews();
+}
+
+async function deleteGuest(guestId) {
+  if (!confirm('Are you sure you want to remove this guest profile?')) return;
+
+  if (AppState.isOnline) {
+    try {
+      await apiRequest(`/api/guests/${guestId}`, { method: 'DELETE' });
+      showToast('Deleted', 'Guest profile removed', 'success');
+    } catch (err) {
+      showToast('Error', err.message, 'error');
+      return;
+    }
+  }
+
+  AppState.guests = AppState.guests.filter(g => g.id !== guestId);
+  recalculateMetrics();
+  renderAllViews();
+}
+
+// BOOKING ACTIONS
+function openCreateReservationModal() {
+  const guestSelect = document.getElementById('booking-guest-select');
+  const roomSelect = document.getElementById('booking-room-select');
+
+  if (guestSelect) {
+    guestSelect.innerHTML = AppState.guests.map(g => `
+      <option value="${g.id}">${escapeHtml(g.name)} (${g.phone})</option>
+    `).join('') || '<option value="">No guests registered yet</option>';
+  }
+
+  if (roomSelect) {
+    const avail = AppState.rooms.filter(r => r.status === 'AVAILABLE');
+    roomSelect.innerHTML = (avail.length ? avail : AppState.rooms).map(r => `
+      <option value="${r.id}">Suite ${escapeHtml(r.roomNumber)} - ${escapeHtml(r.roomType)} (${formatCurrency(r.price)}/night)</option>
+    `).join('') || '<option value="">No rooms available</option>';
+  }
+
+  // Pre-fill dates
+  const today = new Date().toISOString().split('T')[0];
+  const nextWeek = new Date(Date.now() + 3 * 86400000).toISOString().split('T')[0];
+  const inElem = document.getElementById('booking-checkin');
+  const outElem = document.getElementById('booking-checkout');
+  if (inElem) inElem.value = today;
+  if (outElem) outElem.value = nextWeek;
+
+  openModal('create-booking-modal');
+}
+
+function openCreateReservationForGuest(guestId) {
+  openCreateReservationModal();
+  const guestSelect = document.getElementById('booking-guest-select');
+  if (guestSelect) guestSelect.value = guestId;
+}
+
+async function handleCreateBooking(event) {
+  event.preventDefault();
+  const form = event.target;
+  const bookingData = {
+    guestId: parseInt(form.guestId.value),
+    roomId: parseInt(form.roomId.value),
+    checkInDate: form.checkInDate.value,
+    checkOutDate: form.checkOutDate.value,
+    numberOfGuests: parseInt(form.numberOfGuests.value),
+    status: 'CONFIRMED',
+  };
+
+  if (!bookingData.guestId || !bookingData.roomId) {
+    showToast('Missing details', 'Please select a guest and room suite', 'error');
+    return;
+  }
+
+  if (AppState.isOnline) {
+    try {
+      const created = await apiRequest('/api/bookings', {
+        method: 'POST',
+        body: JSON.stringify(bookingData),
+      });
+      AppState.bookings.push(created);
+      showToast('Reservation Confirmed', `Booking #BKG-${created.id} confirmed!`, 'success');
+    } catch (err) {
+      showToast('Booking Error', err.message, 'error');
+      return;
+    }
+  } else {
+    const newId = (AppState.bookings.length ? Math.max(...AppState.bookings.map(b => b.id)) : 0) + 1;
+    AppState.bookings.push({ id: newId, ...bookingData });
+    showToast('Reservation Confirmed (Demo)', `Booking #BKG-${newId} confirmed!`, 'info');
+  }
+
+  // Mark room as occupied
+  changeRoomStatus(bookingData.roomId, 'OCCUPIED');
+
+  closeModal('create-booking-modal');
+  form.reset();
+  recalculateMetrics();
+  renderAllViews();
+}
+
+async function cancelBooking(bookingId) {
+  if (!confirm('Are you sure you want to cancel this booking?')) return;
+
+  if (AppState.isOnline) {
+    try {
+      await apiRequest(`/api/bookings/${bookingId}`, { method: 'DELETE' });
+      showToast('Cancelled', `Booking #BKG-${bookingId} has been cancelled`, 'success');
+    } catch (err) {
+      showToast('Error', err.message, 'error');
+      return;
+    }
+  }
+
+  const b = AppState.bookings.find(x => x.id === bookingId);
+  if (b) {
+    b.status = 'CANCELLED';
+    // Make room available again
+    changeRoomStatus(b.roomId, 'AVAILABLE');
+  }
+
+  recalculateMetrics();
+  renderAllViews();
+}
+
+// PAYMENT ACTIONS
+function openPaymentForBooking(bookingId) {
+  const booking = AppState.bookings.find(b => b.id === bookingId);
+  const room = booking ? AppState.rooms.find(r => r.id === booking.roomId) : null;
+  const inputBookingId = document.getElementById('payment-booking-id');
+  const inputAmount = document.getElementById('payment-amount');
+
+  if (inputBookingId) inputBookingId.value = bookingId;
+  if (inputAmount && room) {
+    inputAmount.value = room.price || 5000;
+  }
+
+  openModal('add-payment-modal');
+}
+
+async function handleCreatePayment(event) {
+  event.preventDefault();
+  const form = event.target;
+  const paymentData = {
+    bookingId: parseInt(form.bookingId.value),
+    amount: parseFloat(form.amount.value),
+    paymentMethod: form.paymentMethod.value,
+    paymentStatus: form.paymentStatus.value,
+  };
+
+  if (AppState.isOnline) {
+    try {
+      const created = await apiRequest('/api/payments', {
+        method: 'POST',
+        body: JSON.stringify(paymentData),
+      });
+      AppState.payments.push(created);
+      showToast('Payment Recorded', `Amount of ${formatCurrency(paymentData.amount)} processed via ${paymentData.paymentMethod}`, 'success');
+    } catch (err) {
+      showToast('Payment Error', err.message, 'error');
+      return;
+    }
+  } else {
+    const newId = (AppState.payments.length ? Math.max(...AppState.payments.map(p => p.id)) : 0) + 1;
+    AppState.payments.push({ id: newId, ...paymentData, paymentDate: new Date().toISOString() });
+    showToast('Payment Recorded (Demo)', `Amount of ${formatCurrency(paymentData.amount)} saved`, 'info');
+  }
+
+  closeModal('add-payment-modal');
+  form.reset();
+  recalculateMetrics();
+  renderAllViews();
+}
+
+// STAFF ACTIONS
+async function handleCreateStaff(event) {
+  event.preventDefault();
+  const form = event.target;
+  const staffData = {
+    name: form.name.value.trim(),
+    email: form.email.value.trim(),
+    phone: form.phone.value.trim(),
+    department: form.department.value.trim(),
+    position: form.position.value.trim(),
+  };
+
+  if (AppState.isOnline) {
+    try {
+      const created = await apiRequest('/api/staff', {
+        method: 'POST',
+        body: JSON.stringify(staffData),
+      });
+      AppState.staff.push(created);
+      showToast('Staff Added', `${staffData.name} appointed as ${staffData.position}`, 'success');
+    } catch (err) {
+      showToast('Error', err.message, 'error');
+      return;
+    }
+  } else {
+    const newId = (AppState.staff.length ? Math.max(...AppState.staff.map(s => s.id)) : 0) + 1;
+    AppState.staff.push({ id: newId, ...staffData });
+    showToast('Staff Added (Demo)', `${staffData.name} added`, 'info');
+  }
+
+  closeModal('add-staff-modal');
+  form.reset();
+  renderStaff();
+}
+
+async function deleteStaff(staffId) {
+  if (!confirm('Remove this staff profile?')) return;
+  if (AppState.isOnline) {
+    try {
+      await apiRequest(`/api/staff/${staffId}`, { method: 'DELETE' });
+      showToast('Removed', 'Staff member deleted', 'success');
+    } catch (err) {
+      showToast('Error', err.message, 'error');
+      return;
+    }
+  }
+  AppState.staff = AppState.staff.filter(s => s.id !== staffId);
+  renderStaff();
+}
+
+// USER ACCOUNT ACTIONS
+async function handleCreateUser(event) {
+  event.preventDefault();
+  const form = event.target;
+  const userData = {
+    username: form.username.value.trim(),
+    password: form.password.value,
+    role: form.role.value,
+  };
+
+  if (AppState.isOnline) {
+    try {
+      const created = await apiRequest('/api/users', {
+        method: 'POST',
+        body: JSON.stringify(userData),
+      });
+      AppState.users.push(created);
+      showToast('User Created', `Account @${userData.username} (${userData.role}) is ready`, 'success');
+    } catch (err) {
+      showToast('Failed to Create User', err.message, 'error');
+      return;
+    }
+  } else {
+    const newId = (AppState.users.length ? Math.max(...AppState.users.map(u => u.id)) : 0) + 1;
+    AppState.users.push({ id: newId, username: userData.username, role: userData.role });
+    showToast('User Added (Demo)', `User @${userData.username} registered`, 'info');
+  }
+
+  closeModal('add-user-modal');
+  form.reset();
+  renderUsers();
+}
+
+async function deleteUserAccount(userId) {
+  if (!confirm('Delete this system login account?')) return;
+  if (AppState.isOnline) {
+    try {
+      await apiRequest(`/api/users/${userId}`, { method: 'DELETE' });
+      showToast('User Deleted', 'Account removed successfully', 'success');
+    } catch (err) {
+      showToast('Error', err.message, 'error');
+      return;
+    }
+  }
+  AppState.users = AppState.users.filter(u => u.id !== userId);
+  renderUsers();
+}
+
+// =============================================================================
+// UI CONTROLS & NAVIGATION
+// =============================================================================
+
+function switchTab(tabId) {
+  AppState.activeTab = tabId;
+
+  // Nav items
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.classList.toggle('active', item.dataset.tab === tabId);
+  });
+
+  // Panes
+  document.querySelectorAll('.tab-pane').forEach(pane => {
+    pane.classList.toggle('active', pane.id === `tab-${tabId}`);
+  });
+
+  // Mobile sidebar close
+  const sidebar = document.querySelector('.sidebar');
+  if (sidebar) sidebar.classList.remove('mobile-open');
+
+  // Trigger re-renders
+  if (tabId === 'rooms') renderRooms();
+  if (tabId === 'reservations') renderBookings();
+  if (tabId === 'guests') renderGuests();
+  if (tabId === 'billing') renderPayments();
+  if (tabId === 'staff') renderStaff();
+  if (tabId === 'users') renderUsers();
+}
+
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) modal.classList.add('active');
+}
+
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) modal.classList.remove('active');
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('grandstay_theme', next);
+  showToast('Theme Changed', `Switched to ${next === 'dark' ? 'Obsidian Night' : 'Ivory Pearl'} mode`, 'info');
+}
+
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  if (sidebar) sidebar.classList.toggle('mobile-open');
+}
+
+// =============================================================================
+// INITIALIZATION
+// =============================================================================
+
+document.addEventListener('DOMContentLoaded', async () => {
+  // Theme restoration
+  const savedTheme = localStorage.getItem('grandstay_theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+
+  // Settings base URL setup
+  const apiInput = document.getElementById('settings-api-url');
+  if (apiInput) apiInput.value = AppConfig.getApiBase();
+
+  // Navigation click listeners
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const tab = item.dataset.tab;
+      if (tab) switchTab(tab);
+    });
+  });
+
+  // Filter Pills (Rooms)
+  document.querySelectorAll('#rooms-filter-pills .filter-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('#rooms-filter-pills .filter-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      AppState.filterRooms = pill.dataset.filter;
+      renderRooms();
+    });
+  });
+
+  // Filter Pills (Bookings)
+  document.querySelectorAll('#bookings-filter-pills .filter-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('#bookings-filter-pills .filter-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      AppState.filterBookings = pill.dataset.filter;
+      renderBookings();
+    });
+  });
+
+  // Filter Pills (Staff)
+  document.querySelectorAll('#staff-filter-pills .filter-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('#staff-filter-pills .filter-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      AppState.filterStaff = pill.dataset.filter;
+      renderStaff();
+    });
+  });
+
+  // Global Search input
+  const searchInput = document.getElementById('global-search-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      AppState.searchQuery = e.target.value.trim();
+      if (AppState.activeTab === 'rooms') renderRooms();
+      else if (AppState.activeTab === 'reservations') renderBookings();
+      else if (AppState.activeTab === 'guests') renderGuests();
+    });
+  }
+
+  // Ticking Clock
+  setInterval(() => {
+    const clock = document.getElementById('hero-clock');
+    if (clock) {
+      const now = new Date();
+      clock.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
+  }, 1000);
+
+  // Setup form submit handlers
+  const loginForm = document.getElementById('login-form');
+  if (loginForm) {
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const u = loginForm.username.value.trim();
+      const p = loginForm.password.value;
+      await handleLogin(u, p);
+    });
+  }
+
+  const roomForm = document.getElementById('form-add-room');
+  if (roomForm) roomForm.addEventListener('submit', handleCreateRoom);
+
+  const guestForm = document.getElementById('form-add-guest');
+  if (guestForm) guestForm.addEventListener('submit', handleCreateGuest);
+
+  const bookingForm = document.getElementById('form-create-booking');
+  if (bookingForm) bookingForm.addEventListener('submit', handleCreateBooking);
+
+  const paymentForm = document.getElementById('form-add-payment');
+  if (paymentForm) paymentForm.addEventListener('submit', handleCreatePayment);
+
+  const staffForm = document.getElementById('form-add-staff');
+  if (staffForm) staffForm.addEventListener('submit', handleCreateStaff);
+
+  const userForm = document.getElementById('form-add-user');
+  if (userForm) userForm.addEventListener('submit', handleCreateUser);
+
+  // Settings Save
+  const saveSettingsBtn = document.getElementById('btn-save-settings');
+  if (saveSettingsBtn) {
+    saveSettingsBtn.addEventListener('click', () => {
+      const urlInput = document.getElementById('settings-api-url');
+      if (urlInput) {
+        AppConfig.setApiBase(urlInput.value.trim());
+        showToast('Configuration Saved', 'API Base URL updated', 'success');
+        checkBackendHealth();
+        fetchAllData();
+      }
+    });
+  }
+
+  // Test Ping Button
+  const pingBtn = document.getElementById('btn-test-ping');
+  if (pingBtn) {
+    pingBtn.addEventListener('click', async () => {
+      const start = Date.now();
+      const online = await checkBackendHealth();
+      const latency = Date.now() - start;
+      if (online) {
+        showToast('Backend Online', `Spring Boot server responded in ${latency}ms at ${AppConfig.getApiBase()}`, 'success');
+      } else {
+        showToast('Connection Offline', `Unable to connect to ${AppConfig.getApiBase()}. Is Spring Boot running?`, 'error');
+      }
+    });
+  }
+
+  // Seed Button
+  const seedBtn = document.getElementById('btn-seed-data');
+  if (seedBtn) seedBtn.addEventListener('click', seedBackendWithSampleData);
+
+  // Initial load
+  updateAuthUI();
+  await fetchAllData();
+});
+
+</script>
+</body>
+</html>
+

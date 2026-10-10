@@ -1,59 +1,73 @@
 import api from "./axios";
-import type { Reservation } from "../types";
+import type { Booking } from "../types";
 
-// Fetch all reservations
-export const getReservations = async (): Promise<Reservation[]> => {
-  const response = await api.get<Reservation[]>("/reservations/");
+export interface BookingPayload {
+  guestId: number;
+  roomId: number;
+  checkInDate: string;
+  checkOutDate: string;
+  numberOfGuests: number;
+  status: string;
+}
+
+// Fetch all bookings
+export const getBookings = async (): Promise<Booking[]> => {
+  const response = await api.get<Booking[]>("/api/bookings");
   return response.data;
 };
 
-// Fetch a reservation by ID
-export const getReservationById = async (
-  id: number
-): Promise<Reservation> => {
-  const response = await api.get<Reservation>(`/reservations/${id}`);
+// Alias for reservations
+export const getReservations = getBookings;
+
+// Fetch a booking by ID
+export const getBookingById = async (id: number): Promise<Booking> => {
+  const response = await api.get<Booking>(`/api/bookings/${id}`);
   return response.data;
 };
 
-// Create a new reservation
-export const createReservation = async (
-  reservationData: Omit<Reservation, "id" | "guest" | "room">
-): Promise<Reservation> => {
-  const response = await api.post<Reservation>(
-    "/reservations/",
-    reservationData
+// Fetch bookings by guest
+export const getBookingsByGuest = async (guestId: number): Promise<Booking[]> => {
+  const response = await api.get<Booking[]>(`/api/bookings/guest/${guestId}`);
+  return response.data;
+};
+
+// Fetch bookings by status
+export const getBookingsByStatus = async (status: string): Promise<Booking[]> => {
+  const response = await api.get<Booking[]>(`/api/bookings/status/${encodeURIComponent(status)}`);
+  return response.data;
+};
+
+// Create a new booking
+export const createBooking = async (
+  bookingData: BookingPayload
+): Promise<Booking> => {
+  const response = await api.post<Booking>(
+    "/api/bookings",
+    bookingData
   );
-
   return response.data;
 };
 
-// Update an existing reservation
-export const updateReservation = async (
+export const createReservation = createBooking;
+
+// Update an existing booking
+export const updateBooking = async (
   id: number,
-  reservationData: Partial<
-    Omit<Reservation, "id" | "guest" | "room">
-  >
-): Promise<Reservation> => {
-  const response = await api.put<Reservation>(
-    `/reservations/${id}`,
-    reservationData
+  bookingData: BookingPayload
+): Promise<Booking> => {
+  const response = await api.put<Booking>(
+    `/api/bookings/${id}`,
+    bookingData
   );
-
   return response.data;
 };
 
-// Cancel a reservation
-export const cancelReservation = async (
-  id: number
-): Promise<Reservation> => {
-  const response = await api.patch<Reservation>(
-    `/reservations/${id}/cancel`
-  );
+export const updateReservation = updateBooking;
 
+// Cancel a booking
+export const cancelBooking = async (id: number): Promise<string> => {
+  const response = await api.delete<string>(`/api/bookings/${id}`);
   return response.data;
 };
 
-// Delete a reservation
-export const deleteReservation = async (id: number): Promise<void> => {
-  await api.delete(`/reservations/${id}`);
-};
+export const cancelReservation = cancelBooking;

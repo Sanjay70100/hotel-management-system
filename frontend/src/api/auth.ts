@@ -15,21 +15,10 @@ export const loginUser = async (
 
   try {
     // Attempt standard JSON payload first
-    response = await api.post<LoginResponse>("/auth/login", credentials);
+    response = await api.post<LoginResponse>("/api/auth/login", credentials);
   } catch (err: unknown) {
-    // If FastAPI endpoint expects OAuth2 password form (application/x-www-form-urlencoded)
-    const status = (err as { response?: { status?: number } })?.response?.status;
-    if (status === 422) {
-      const formData = new URLSearchParams();
-      formData.append("username", credentials.username);
-      formData.append("password", credentials.password);
-
-      response = await api.post<LoginResponse>("/auth/login", formData, {
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      });
-    } else {
-      throw err;
-    }
+    // Fallback if needed
+    throw err;
   }
 
   // Extract access token regardless of backend key naming
@@ -41,14 +30,32 @@ export const loginUser = async (
   if (token) {
     localStorage.setItem("hotel_access_token", token);
   }
+  if (response.data.username) {
+    localStorage.setItem(
+      "hotel_user",
+      JSON.stringify({
+        id: response.data.id,
+        username: response.data.username,
+        role: response.data.role,
+      })
+    );
+  }
 
   return response.data;
 };
 
 // Retrieve the currently authenticated user
 export const getCurrentUser = async (): Promise<User> => {
-  const response = await api.get<User>("/auth/me");
-  return response.data;
+  try {
+    const response = await api.get<User>("/api/auth/me");
+    return response.data;
+  } catch {
+    const cached = localStorage.getItem("hotel_user");
+    if (cached) {
+      return JSON.parse(cached);
+    }
+    throw new Error("User not authenticated");
+  }
 };
 
 // Log out the current user
